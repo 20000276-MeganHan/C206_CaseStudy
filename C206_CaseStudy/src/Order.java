@@ -48,7 +48,7 @@ public class Order {
 	}
 
 	public void printInfo() {
-		String output = String.format("%-5d %-10s %-10s %-10s %s", id, date, meal, drink, fruit);
+		String output = String.format("%-5d %-15s %-15s %-15s %s", id, date, meal, drink, fruit);
 		System.out.println(output);
 	}
 }

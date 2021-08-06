@@ -37,23 +37,20 @@ public class C206_CaseStudy {
 				int view = Helper.readInt("Enter option to view selected item > ");
 				if (view == 1) { // view accounts 
 					viewAccount(accounts);
-<<<<<<< HEAD
 				}else if (view == 2) {
-=======
+					
 				}else if (view == 2) { // view menu items 
->>>>>>> branch 'master' of https://github.com/20000276-MeganHan/C206_CaseStudy.git
 					viewMenuItem(menuList);
-<<<<<<< HEAD
+
 				}else if (view == 3) {
 					
 				}else if (view == 4) {
 					viewLunchBoxOrder(orderList);
 				}else if (view == 5) {
-=======
+
 				}else if (view == 3) { // view monthly menu 
 					
 				}else if (view == 4) { // view order bill
->>>>>>> branch 'master' of https://github.com/20000276-MeganHan/C206_CaseStudy.git
 					
 				}
 
@@ -72,19 +69,17 @@ public class C206_CaseStudy {
 					addMenuItem(menuList);
 				} else if (add == 3) {  // add monthly menu 
 
-<<<<<<< HEAD
 				} else if (add == 4) {
 					addLunchBoxOrder(orderList);
 				} else if (add == 5) {
-=======
+
 				} else if (add == 4) { // add lunch box menu 
 
 				} else if (add == 5) { // add order bill
->>>>>>> branch 'master' of https://github.com/20000276-MeganHan/C206_CaseStudy.git
 
 				}
 
-			} else if (option == 2) {
+			} else if (option == 3) {
 				C206_CaseStudy.setHeader("Select option to view");
 				System.out.println("1. Delete user account for Parents/Secondary school students");
 				System.out.println("2. Delete menu items");
@@ -97,17 +92,12 @@ public class C206_CaseStudy {
 					deleteAccount(accounts);
 				}else if (delete == 2) { //delete menu items 
 					deleteMenuItem(menuList);
-<<<<<<< HEAD
+
 				}else if (delete == 3) {
 					
 				}else if (delete ==4) {
 					deleteLunchBoxOrder(orderList);
 				}else if (delete == 5) {
-=======
-				}else if (delete == 3) { // delete monthly menu 
-					
-				}else if (delete == 4) { // delete order bill
->>>>>>> branch 'master' of https://github.com/20000276-MeganHan/C206_CaseStudy.git
 					
 				}
 			}
@@ -201,19 +191,19 @@ public class C206_CaseStudy {
        
         if (LocalDate.parse(dateOfOrder).getDayOfYear() - LocalDate.now().getDayOfYear() > 0 && LocalDate.parse(dateOfOrder).getMonth() == LocalDate.now().getMonth()) {
             viewMenuItem(menuList);
-            for (Menu m : menuList) {
-            	viewMenuItem(menuList);
                 String cuisine = Helper.readString("Enter cuisine > ");
                 if (!cuisine.isEmpty()){
-                    if (cuisine.equalsIgnoreCase(m.getCuisine())) {
-                        orderList.add(new Order(orderList.size()+1, LocalDate.parse(dateOfOrder), m.getMeal(), m.getDrink(), m.getFruit()));
-                    } else {
-                        System.out.println("Please enter an available cuisine");
-                    }
+                	for (Menu m : menuList) {
+	                    if (cuisine.equalsIgnoreCase(m.getCuisine())) {
+	                        orderList.add(new Order(orderList.size()+1, LocalDate.parse(dateOfOrder), m.getMeal(), m.getDrink(), m.getFruit()));
+	                        break;
+	                    } else {
+	                        System.out.println("Please enter an available cuisine");
+	                    }
+                	}
                 } else {
                     System.out.println("Please enter a cuisine");
                 }
-            }
         } else {
             System.out.println("Add Lunch Box Order failed");
         }
@@ -221,7 +211,7 @@ public class C206_CaseStudy {
    
     public static void viewLunchBoxOrder(ArrayList<Order> orderList) {
         setHeader("VIEW LUNCH BOX ORDERS");
-        System.out.println(String.format("%-5s %-10s %-10s %-10s %s", "ID", "DATE", "MEAL", "DRINK", "FRUIT"));
+        System.out.println(String.format("%-5s %-15s %-15s %-15s %s", "ID", "DATE", "MEAL", "DRINK", "FRUIT"));
         for (Order odr : orderList) {
             odr.printInfo();
         }

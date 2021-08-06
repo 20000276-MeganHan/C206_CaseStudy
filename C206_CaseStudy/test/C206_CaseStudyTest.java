@@ -38,8 +38,8 @@ public class C206_CaseStudyTest {
 		//boundary
 		assertNotNull("Check if there is valid lunchBoxOrder arraylist to add to", orderList); 
 		
-		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
-		//The item just added is as same as the first item of the list
+		//Given an empty list, after adding 1 order, the size of the list is 1
+		//The order just added is as same as the first order of the list
 		//normal
 		orderList.add(lunchBoxOrder1);
 		assertEquals("Check that orderList size is 1", 1, orderList.size());
@@ -47,7 +47,7 @@ public class C206_CaseStudyTest {
 		
 		//Add another order
 		//Test the size of orderList is 2
-		//The item just added is as same as the second item of the list
+		//The order just added is as same as the second order of the list
 		//normal
 		orderList.add(lunchBoxOrder2);
 		assertEquals("Check that orderList size is 2", 2, orderList.size());
@@ -58,6 +58,7 @@ public class C206_CaseStudyTest {
 		boolean ok = (lunchBoxOrder3.getDate().getDayOfYear() - LocalDate.now().getDayOfYear() > 0);
 		//Check that new Lunch Box Order date is after today date
 		assertFalse("Test that new Lunch Box Order date is before today date ok?", ok);
+		
 		//Do not add this order. 
 		//Test size of the list is 2
 		assertEquals("Check that foodItems arraylist size is 2", 2, orderList.size());
@@ -66,7 +67,7 @@ public class C206_CaseStudyTest {
 		//boundary
 		assertNotNull("Test if there is valid order arraylist to retrieve order to view", orderList);
 	
-		//Test PurchaseOrdersList can view purchases order
+		//Test orderList can view  order
 		//C206_CaseStudy.viewLunchBoxOrder(orderList));
 		
 		//Delete order from orderList
