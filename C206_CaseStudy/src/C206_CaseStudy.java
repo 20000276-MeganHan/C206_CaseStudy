@@ -1,14 +1,15 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
 	private static final int OPTION_OUT = 4;
+	private static ArrayList<Menu> menuList = new ArrayList<Menu>();
+	private static ArrayList<Account> accounts = new ArrayList<Account>();
+	private static ArrayList<Order> orderList = new ArrayList<Order>();
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ArrayList<Menu> menuList = new ArrayList<Menu>();
-		ArrayList<Account> accounts = new ArrayList<Account>();
-
 		accounts.add(new Account("Jane123x", "12345", "Parent"));
 		accounts.add(new Account("xxRoxy23", "45678", "Student"));
 		accounts.add(new Account("Regina34", "67805", "Parent"));
@@ -154,6 +155,84 @@ public class C206_CaseStudy {
 
 		}
 	}
+	public static void addLunchBoxOrder(ArrayList<Order> orderList) {
+        setHeader("ADD LUNCH BOX ORDER");
+        String dateOfOrder = Helper.readString("Enter the date to have the lunch box > ");
+       
+        if (LocalDate.parse(dateOfOrder).getDayOfYear() - LocalDate.now().getDayOfYear() > 0 && LocalDate.parse(dateOfOrder).getMonth() == LocalDate.now().getMonth()) {
+            viewMenuItem(menuList);
+            for (Menu m : menuList) {
+                String cuisine = Helper.readString("Enter cuisine > ");
+                if (!cuisine.isEmpty()){
+                    if (cuisine.equalsIgnoreCase(m.getCuisine())) {
+                        orderList.add(new Order(orderList.size()+1, LocalDate.parse(dateOfOrder), m.getMeal(), m.getDrink(), m.getFruit()));
+                    } else {
+                        System.out.println("Please enter an available cuisine");
+                    }
+                } else {
+                    System.out.println("Please enter a cuisine");
+                }
+            }
+        } else {
+            System.out.println("Add Lunch Box Order failed");
+        }
+    }
+   
+    public static void viewLunchBoxOrder(ArrayList<Order> orderList) {
+        setHeader("VIEW LUNCH BOX ORDERS");
+        System.out.println(String.format("%-5s %-10s %-10s %-10s %s", "ID", "DATE", "MEAL", "DRINK", "FRUIT"));
+        for (Order odr : orderList) {
+            odr.printInfo();
+        }
+    }
+    public static void updateLunchBoxOrder(ArrayList<Order> orderList) {
+        setHeader("UPDATE LUNCH BOX ORDERS");
+        String dateOfOrder = Helper.readString("Enter the date > ");
+        if (LocalDate.parse(dateOfOrder).getDayOfYear() - LocalDate.now().getDayOfYear() > 0) {
+            for (Order odr : orderList) {
+                if (LocalDate.parse(dateOfOrder) == odr.getDate()) {
+                	viewMenuItem(menuList);
+                    for (Menu m : menuList) {
+                        String cuisine = Helper.readString("Enter cuisine > ");
+                        if (!cuisine.isEmpty()){
+                            if (cuisine.equalsIgnoreCase(m.getCuisine())) {
+                                odr.setMeal(m.getMeal());
+                                odr.setDrink(m.getDrink());
+                                odr.setFruit(m.getFruit());
+                            }
+                        } else {
+                            System.out.println("Please enter an available cuisine");
+                        }
+                    }
+                }else {
+                    System.out.println("No order on this date");
+                }
+            }
+        } else {
+            System.out.println("Please enter a cuisine");
+        }
+    }
+   
+    public static void deleteLunchBoxOrder(ArrayList<Order> orderList) {
+        setHeader("DELETE LUNCH BOX ORDERS");
+        String date = Helper.readString("Enter order date to cancel > ");
+        if (LocalDate.parse(date).getDayOfYear() - LocalDate.now().getDayOfYear() > 0) {
+            for (Order odr : orderList) {
+                if (LocalDate.parse(date) == odr.getDate()) {
+                    odr.printInfo();
+                    char check = Helper.readChar("Do you want to cancel order? (Y/N) > ");
+                    if (check == 'Y') {
+                        orderList.remove(odr);
+                        System.out.println("Cancellation Successful");
+                    } else {
+                        odr.printInfo();
+                    }
+                }
+                System.out.println("No order on this date");
+            }
+            System.out.println("Cancellation Failed");
+        }
+    }
 }
 
 // commenting to check if pushing works
