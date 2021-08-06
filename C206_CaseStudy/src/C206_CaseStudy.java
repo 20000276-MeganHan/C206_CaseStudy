@@ -36,9 +36,14 @@ public class C206_CaseStudy {
 				int view = Helper.readInt("Enter option to view selected item > ");
 				if (view == 1) {
 					viewAccount(accounts);
-
 				}else if (view == 2) {
 					viewMenuItem(menuList);
+				}else if (view == 3) {
+					
+				}else if (view == 4) {
+					viewLunchBoxOrder(orderList);
+				}else if (view == 5) {
+					
 				}
 
 			} else if (option == 2) {
@@ -57,7 +62,7 @@ public class C206_CaseStudy {
 				} else if (add == 3) {
 
 				} else if (add == 4) {
-
+					addLunchBoxOrder(orderList);
 				} else if (add == 5) {
 
 				}
@@ -75,6 +80,12 @@ public class C206_CaseStudy {
 					deleteAccount(accounts);
 				}else if (delete == 2) {
 					deleteMenuItem(menuList);
+				}else if (delete == 3) {
+					
+				}else if (delete ==4) {
+					deleteLunchBoxOrder(orderList);
+				}else if (delete == 5) {
+					
 				}
 			}
 
