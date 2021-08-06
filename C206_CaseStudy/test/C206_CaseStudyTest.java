@@ -11,12 +11,13 @@ public class C206_CaseStudyTest {
 	private ArrayList<Order> orderList = new ArrayList<Order>();
 	private Order lunchBoxOrder1;
 	private Order lunchBoxOrder2;
+	private Order lunchBoxOrder3;
 	
 	@Before
 	public void setUp() throws Exception {
 	lunchBoxOrder1 = new Order(1, LocalDate.parse("2021/08/30"), "Carbonara", "Fruit punch", "Watermelon Slice");
-	lunchBoxOrder2 = new Order(2, LocalDate.parse("2021/08/09"), "Carbonara", "Fruit punch", "Watermelon Slice");
-	
+	lunchBoxOrder2 = new Order(2, LocalDate.parse("2021/09/30"), "Carbonara", "Fruit punch", "Watermelon Slice");
+	lunchBoxOrder3 = new Order(3, LocalDate.parse("2021/08/06"), "Carbonara", "Fruit punch", "Watermelon Slice");
 	}
 
 	@After
@@ -59,7 +60,6 @@ public class C206_CaseStudyTest {
 		
 		//Delete order from orderList
 		//Test the size of the list is 0
-		//normal
 		orderList.remove(0);
 		assertEquals("Check that orderList size is 1", 0, orderList.size());
 	}
