@@ -21,7 +21,7 @@ public class C206_CaseStudyTest {
 	public void setUp() throws Exception {
 	lunchBoxOrder1 = new Order(1, LocalDate.parse("2021-08-30"), "Carbonara", "Fruit punch", "Watermelon Slice");
 	lunchBoxOrder2 = new Order(2, LocalDate.parse("2021-08-24"), "Carbonara", "Fruit punch", "Watermelon Slice");
-	lunchBoxOrder3 = new Order(3, LocalDate.parse("2021-08-09"), "Carbonara", "Fruit punch", "Watermelon Slice");
+	lunchBoxOrder3 = new Order(3, LocalDate.parse("2021-08-06"), "Carbonara", "Fruit punch", "Watermelon Slice");
 	}
 
 
@@ -53,6 +53,21 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that orderList size is 2", 2, orderList.size());
 		assertSame("Check that lunch box order is added", lunchBoxOrder2, orderList.get(1));
 		
+		// error
+		// Date entered is "2021-08-06"
+		boolean ok = (lunchBoxOrder3.getDate().getDayOfYear() - LocalDate.now().getDayOfYear() > 0);
+		//Check that new Lunch Box Order date is after today date
+		assertFalse("Test that new Lunch Box Order date is before today date ok?", ok);
+		//Do not add this order. 
+		//Test size of the list is 2
+		assertEquals("Check that foodItems arraylist size is 2", 2, orderList.size());
+		
+		// Test if order list is not null but empty
+		//boundary
+		assertNotNull("Test if there is valid order arraylist to retrieve order to view", orderList);
+	
+		//Test PurchaseOrdersList can view purchases order
+		//C206_CaseStudy.viewLunchBoxOrder(orderList));
 		
 		//Delete order from orderList
 		//Test the size of the list is 1
@@ -64,6 +79,7 @@ public class C206_CaseStudyTest {
 		//Test the size of the list is 0
 		orderList.remove(0);
 		assertEquals("Check that orderList size is 1", 0, orderList.size());
+		
 	}
 	
 	@After
