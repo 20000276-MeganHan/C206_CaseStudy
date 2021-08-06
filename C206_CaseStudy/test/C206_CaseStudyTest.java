@@ -87,6 +87,7 @@ public class C206_CaseStudyTest {
 	public void tearDown() throws Exception {
 		lunchBoxOrder1 = null;
 		lunchBoxOrder2 = null;
+		lunchBoxOrder3 = null;
 	}
 
 }
