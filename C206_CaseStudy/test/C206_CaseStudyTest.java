@@ -11,7 +11,6 @@ public class C206_CaseStudyTest {
 	private ArrayList<Order> orderList = new ArrayList<Order>();
 	private Order lunchBoxOrder1;
 	private Order lunchBoxOrder2;
-	private Order lunchBoxOrder3;
 	
 	@Before
 	public void setUp() throws Exception {
