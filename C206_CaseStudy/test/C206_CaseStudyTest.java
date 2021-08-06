@@ -52,6 +52,9 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that orderList size is 2", 2, orderList.size());
 		assertSame("Check that lunch box order is added", lunchBoxOrder2, orderList.get(1));
 		
+		//Test date entered is after today date
+		//boundary
+		assertEquals("2021-08-07", lunchBoxOrder1.getDate());
 		//Delete order from orderList
 		//Test the size of the list is 1
 		//normal
