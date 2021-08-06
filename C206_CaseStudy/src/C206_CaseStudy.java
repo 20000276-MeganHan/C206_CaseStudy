@@ -7,6 +7,7 @@ public class C206_CaseStudy {
 	private static ArrayList<Menu> menuList = new ArrayList<Menu>();
 	private static ArrayList<Account> accounts = new ArrayList<Account>();
 	private static ArrayList<Order> orderList = new ArrayList<Order>();
+	private static ArrayList<OrderBill> orderbillList= new ArrayList<OrderBill>();
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -271,8 +272,48 @@ public class C206_CaseStudy {
                 System.out.println("No order on this date");
             }
             System.out.println("Cancellation Failed");
-        }
+	}
     }
+    public static void addBill(ArrayList<OrderBill> orderbillList) {
+    	
+    	int id= Helper.readInt("Enter new orderbill ID");
+    	double price=Helper.readDouble("Enter price!" );
+    	int quantity=Helper.readInt("Enter quantity!");
+    	double totalPrice = 0.0;
+    	
+    	totalPrice= price * quantity;
+
+
+		OrderBill newOrderBill = new OrderBill(id, price, quantity, totalPrice);
+		orderbillList.add(newOrderBill);
+
+    		
+    	}
+    public static void viewBill(ArrayList<OrderBill> orderbillList) {
+    	String view = String.format("%-10s %-10s %-10s %s\n", "id", "price", "quantity", "totalPrice");
+		Helper.line(50, "-"); 
+		for (OrderBill ob : orderbillList) {
+			view += String.format("%-10d %.-2f %-10d %.-2f %s\n", ob.getId(), ob.getPrice(), ob.getQuantity() , ob.gettotalPrice());
+		}
+		System.out.println(view);
+    }
+    public static void deleteBill(ArrayList<OrderBill> orderbillList) {
+    	int id= Helper.readInt("Enter orderbill ID to delete ");
+    	for(OrderBill ob: orderbillList) {
+    		if(id == ob.getId()); {
+    			char confirm = Helper.readChar("Do you want to delete orderBill? (Y/N) > ");
+    			if(confirm == 'Y') {
+    				orderbillList.remove(ob);
+    				System.out.println("Order Bill Deleted!");
+    			}else {
+    				System.out.println("Cancelled!");
+    			}
+    		}
+    	}
+    }
+    
+
 }
+
 
 // commenting to check if pushing works.
