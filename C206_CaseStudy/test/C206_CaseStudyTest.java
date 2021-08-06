@@ -1,11 +1,17 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudyTest {
-
+	private ArrayList<Order> orderList = new ArrayList<Order>();
+	private Order lunchBoxOrder1;
+	private Order lunchBoxOrder2;
+	private Order lunchBoxOrder3;
+	
 	@Before
 	public void setUp() throws Exception {
 	}
