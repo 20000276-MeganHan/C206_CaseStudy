@@ -179,6 +179,7 @@ public class C206_CaseStudy {
         if (LocalDate.parse(dateOfOrder).getDayOfYear() - LocalDate.now().getDayOfYear() > 0 && LocalDate.parse(dateOfOrder).getMonth() == LocalDate.now().getMonth()) {
             viewMenuItem(menuList);
             for (Menu m : menuList) {
+            	viewMenuItem(menuList);
                 String cuisine = Helper.readString("Enter cuisine > ");
                 if (!cuisine.isEmpty()){
                     if (cuisine.equalsIgnoreCase(m.getCuisine())) {
