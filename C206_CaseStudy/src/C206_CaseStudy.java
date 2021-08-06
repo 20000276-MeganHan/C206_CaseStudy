@@ -37,6 +37,8 @@ public class C206_CaseStudy {
 				if (view == 1) {
 					viewAccount(accounts);
 
+				}else if (view == 2) {
+					viewMenuItem(menuList);
 				}
 
 			} else if (option == 2) {
@@ -51,7 +53,7 @@ public class C206_CaseStudy {
 				if (add == 1) {
 					addAccount(accounts);
 				} else if (add == 2) {
-
+					addMenuItem(menuList);
 				} else if (add == 3) {
 
 				} else if (add == 4) {
@@ -69,7 +71,11 @@ public class C206_CaseStudy {
 				System.out.println("5. Delete brder bill");
 
 				int delete = Helper.readInt("Enter option to view selected item > ");
-
+				if (delete == 1) {
+					deleteAccount(accounts);
+				}else if (delete == 2) {
+					deleteMenuItem(menuList);
+				}
 			}
 
 		}
