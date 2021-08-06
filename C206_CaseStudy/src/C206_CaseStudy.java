@@ -31,18 +31,28 @@ public class C206_CaseStudy {
 				System.out.println("2. View menu items");
 				System.out.println("3. View monthly menu");
 				System.out.println("4. View lunch box menu");
-				System.out.println("5. View brder bill");
+				System.out.println("5. View order bill");
 
 				int view = Helper.readInt("Enter option to view selected item > ");
-				if (view == 1) {
+				if (view == 1) { // view accounts 
 					viewAccount(accounts);
+<<<<<<< HEAD
 				}else if (view == 2) {
+=======
+				}else if (view == 2) { // view menu items 
+>>>>>>> branch 'master' of https://github.com/20000276-MeganHan/C206_CaseStudy.git
 					viewMenuItem(menuList);
+<<<<<<< HEAD
 				}else if (view == 3) {
 					
 				}else if (view == 4) {
 					viewLunchBoxOrder(orderList);
 				}else if (view == 5) {
+=======
+				}else if (view == 3) { // view monthly menu 
+					
+				}else if (view == 4) { // view order bill
+>>>>>>> branch 'master' of https://github.com/20000276-MeganHan/C206_CaseStudy.git
 					
 				}
 
@@ -52,18 +62,24 @@ public class C206_CaseStudy {
 				System.out.println("2. Add menu items");
 				System.out.println("3. Add monthly menu");
 				System.out.println("4. Add lunch box menu");
-				System.out.println("5. Add brder bill");
+				System.out.println("5. Add order bill");
 
 				int add = Helper.readInt("Enter option to view selected item > ");
-				if (add == 1) {
+				if (add == 1) { // add account
 					addAccount(accounts);
-				} else if (add == 2) {
+				} else if (add == 2) { // add menu item
 					addMenuItem(menuList);
-				} else if (add == 3) {
+				} else if (add == 3) {  // add monthly menu 
 
+<<<<<<< HEAD
 				} else if (add == 4) {
 					addLunchBoxOrder(orderList);
 				} else if (add == 5) {
+=======
+				} else if (add == 4) { // add lunch box menu 
+
+				} else if (add == 5) { // add order bill
+>>>>>>> branch 'master' of https://github.com/20000276-MeganHan/C206_CaseStudy.git
 
 				}
 
@@ -73,18 +89,24 @@ public class C206_CaseStudy {
 				System.out.println("2. Delete menu items");
 				System.out.println("3. Delete monthly menu");
 				System.out.println("4. Delete lunch box menu");
-				System.out.println("5. Delete brder bill");
+				System.out.println("5. Delete order bill");
 
 				int delete = Helper.readInt("Enter option to view selected item > ");
-				if (delete == 1) {
+				if (delete == 1) { // delete account
 					deleteAccount(accounts);
-				}else if (delete == 2) {
+				}else if (delete == 2) { //delete menu items 
 					deleteMenuItem(menuList);
+<<<<<<< HEAD
 				}else if (delete == 3) {
 					
 				}else if (delete ==4) {
 					deleteLunchBoxOrder(orderList);
 				}else if (delete == 5) {
+=======
+				}else if (delete == 3) { // delete monthly menu 
+					
+				}else if (delete == 4) { // delete order bill
+>>>>>>> branch 'master' of https://github.com/20000276-MeganHan/C206_CaseStudy.git
 					
 				}
 			}
@@ -253,4 +275,4 @@ public class C206_CaseStudy {
     }
 }
 
-// commenting to check if pushing works
+// commenting to check if pushing works.
