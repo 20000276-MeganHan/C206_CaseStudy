@@ -60,7 +60,7 @@ public class C206_CaseStudyTest {
 		//normal
 		orderList.remove(1);
 		assertEquals("Check that orderList size is 1", 1, orderList.size());
-		 
+		
 		//Delete order from orderList
 		//Test the size of the list is 0
 		orderList.remove(0);
