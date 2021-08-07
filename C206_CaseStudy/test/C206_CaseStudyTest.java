@@ -31,34 +31,65 @@ public class C206_CaseStudyTest {
 		assertTrue("C206_CaseStudy_SampleTest ",true);
 	}
 	
-
 	@Test
-	public void testLunchBoxOrder() {
+	public void doAddLunchBoxOrderTest() {
 		//Order list is not null, so that can add a new order
 		//boundary
 		assertNotNull("Check if there is valid lunchBoxOrder arraylist to add to", orderList); 
-		
+				
 		//Given an empty list, after adding 1 order, the size of the list is 1
 		//The order just added is as same as the first order of the list
+		//Test that new Lunch Box Order date is after today day - "2021-08-30"
 		//normal
+		boolean ok = (lunchBoxOrder1.getDate().getDayOfYear() - LocalDate.now().getDayOfYear() > 0);
+		assertTrue("Test that new Lunch Box Order date is before today date ok?", ok);
 		orderList.add(lunchBoxOrder1);
 		assertEquals("Check that orderList size is 1", 1, orderList.size());
 		assertSame("Check that lunch box order is added", lunchBoxOrder1, orderList.get(0));
-		
+				
 		//Add another order
 		//Test the size of orderList is 2
 		//The order just added is as same as the second order of the list
+		//Test that new Lunch Box Order date is after today day - "2021-08-24"
 		//normal
+		ok = (lunchBoxOrder2.getDate().getDayOfYear() - LocalDate.now().getDayOfYear() > 0);
+		assertTrue("Test that new Lunch Box Order date is before today date ok?", ok);
 		orderList.add(lunchBoxOrder2);
 		assertEquals("Check that orderList size is 2", 2, orderList.size());
 		assertSame("Check that lunch box order is added", lunchBoxOrder2, orderList.get(1));
 		
 		// error
 		// Date entered is "2021-08-06"
-		boolean ok = (lunchBoxOrder3.getDate().getDayOfYear() - LocalDate.now().getDayOfYear() > 0);
 		//Check that new Lunch Box Order date is after today date
+		ok = (lunchBoxOrder3.getDate().getDayOfYear() - LocalDate.now().getDayOfYear() > 0);
 		assertFalse("Test that new Lunch Box Order date is before today date ok?", ok);
-		
+				
+		//Do not add this order. 
+		//Test size of the list is 2
+		assertEquals("Check that foodItems arraylist size is 2", 2, orderList.size());
+	}
+
+	@Test
+	public void doViewLunchBoxOrderTest() {
+		//Order list is not null, so that can add a new order
+		//boundary
+		assertNotNull("Check if there is valid lunchBoxOrder arraylist to add to", orderList); 
+				
+		//Given an empty list, after adding 1 order, the size of the list is 1
+		//normal
+		boolean ok = (lunchBoxOrder1.getDate().getDayOfYear() - LocalDate.now().getDayOfYear() > 0);
+		assertTrue("Test that new Lunch Box Order date is before today date ok?", ok);
+		orderList.add(lunchBoxOrder1);
+		assertEquals("Check that orderList size is 1", 1, orderList.size());
+						
+		//Add another order
+		//Test the size of orderList is 2
+		//normal
+		ok = (lunchBoxOrder2.getDate().getDayOfYear() - LocalDate.now().getDayOfYear() > 0);
+		assertTrue("Test that new Lunch Box Order date is before today date ok?", ok);
+		orderList.add(lunchBoxOrder2);
+		assertEquals("Check that orderList size is 2", 2, orderList.size());
+				
 		//Do not add this order. 
 		//Test size of the list is 2
 		assertEquals("Check that foodItems arraylist size is 2", 2, orderList.size());
@@ -69,12 +100,42 @@ public class C206_CaseStudyTest {
 	
 		//Test orderList can view  order
 		//C206_CaseStudy.viewLunchBoxOrder(orderList));
-		
+	}
+	
+	@Test
+	public void doDeleteLunchBoxOrderTest() {
+		//Order list is not null, so that can add a new order
+		//boundary
+		assertNotNull("Check if there is valid lunchBoxOrder arraylist to add to", orderList); 
+						
+		//Given an empty list, after adding 1 order, the size of the list is 1
+		//normal
+		boolean ok = (lunchBoxOrder1.getDate().getDayOfYear() - LocalDate.now().getDayOfYear() > 0);
+		assertTrue("Test that new Lunch Box Order date is before today date ok?", ok);
+		orderList.add(lunchBoxOrder1);
+		assertEquals("Check that orderList size is 1", 1, orderList.size());
+						
+		//Add another order
+		//Test the size of orderList is 2
+		//normal
+		ok = (lunchBoxOrder2.getDate().getDayOfYear() - LocalDate.now().getDayOfYear() > 0);
+		assertTrue("Test that new Lunch Box Order date is before today date ok?", ok);
+		orderList.add(lunchBoxOrder2);
+		assertEquals("Check that orderList size is 2", 2, orderList.size());
+				
+		//Check that new Lunch Box Order date is after today date - "2021-08-24"
+		ok = (lunchBoxOrder2.getDate().getDayOfYear() - LocalDate.now().getDayOfYear() > 0);
+		assertTrue("Test that new Lunch Box Order date is before today date ok?", ok);
+				
 		//Delete order from orderList
 		//Test the size of the list is 1
 		//normal
 		orderList.remove(1);
 		assertEquals("Check that orderList size is 1", 1, orderList.size());
+		
+		//Check that new Lunch Box Order date is after today date - "2021-08-30"
+		ok = (lunchBoxOrder1.getDate().getDayOfYear() - LocalDate.now().getDayOfYear() > 0);
+		assertTrue("Test that new Lunch Box Order date is before today date ok?", ok);
 		
 		//Delete order from orderList
 		//Test the size of the list is 0
