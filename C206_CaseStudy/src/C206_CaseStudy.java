@@ -12,9 +12,9 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		accounts.add(new Account("Jane123x", "12345", "Parent"));
-		accounts.add(new Account("xxRoxy23", "45678", "Student"));
+		accounts.add(new Account("xxRoxy23", "45678", "Student", 20034561, 0.0));
 		accounts.add(new Account("Regina34", "67805", "Parent"));
-		accounts.add(new Account("Bob89", "90234", "Student"));
+		accounts.add(new Account("Bob89", "90234", "Student", 20093321, 0.0));
 
 		menuList.add(new Menu("Western", "Carbonara", "Fruit punch", "Watermelon Slice", 5.00));
 		menuList.add(new Menu("Asian", "Chicken Rice", "Milo", "Pear Slice", 4.50));
