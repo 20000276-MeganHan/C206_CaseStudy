@@ -4,6 +4,7 @@ public class Account {
 	public String password;
 	private String user;
 	private double credit;
+	private String studentID;
 	
 	public Account(String username, String password, String user) {
 		this.username = username;
@@ -11,10 +12,11 @@ public class Account {
 		this.user = "Parent";
 	}
 	
-	public Account(String username, String password, String user, double credit) {
+	public Account(String username, String password, String user, String studentID, double credit) {
 		this.username = username;
 		this.password = password;
 		this.user = "Student";
+		this.studentID = studentID;
 		this.credit = 0.0;
 	}
 
