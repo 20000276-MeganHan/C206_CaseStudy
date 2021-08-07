@@ -3,11 +3,19 @@ public class Account {
 	private String username;
 	public String password;
 	private String user;
+	private double credit;
 	
 	public Account(String username, String password, String user) {
 		this.username = username;
 		this.password = password;
-		this.user = user;
+		this.user = "Parent";
+	}
+	
+	public Account(String username, String password, String user, double credit) {
+		this.username = username;
+		this.password = password;
+		this.user = "Student";
+		this.credit = 0.0;
 	}
 
 
@@ -30,7 +38,14 @@ public class Account {
 	public String getUser() {
 		return user;
 	}
+
+	public double getCredit() {
+		return credit;
+	}
 	
+	public void setCredit(double credit) {
+		this.credit = credit;
+	}
 	
 	
 
