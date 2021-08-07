@@ -31,7 +31,7 @@ public class C206_CaseStudy {
 				System.out.println("1. View user account for Parents/Secondary school students");
 				System.out.println("2. View menu items");
 				System.out.println("3. View monthly menu");
-				System.out.println("4. View lunch box menu");
+				System.out.println("4. View lunch box order");
 				System.out.println("5. View order bill");
 
 				int view = Helper.readInt("Enter option to view selected item > ");
@@ -42,15 +42,11 @@ public class C206_CaseStudy {
 				}else if (view == 2) { // view menu items 
 					viewMenuItem(menuList);
 
-				}else if (view == 3) {
-					
-				}else if (view == 4) {
-					viewLunchBoxOrder(orderList);
-				}else if (view == 5) {
-
 				}else if (view == 3) { // view monthly menu 
 					
-				}else if (view == 4) { // view order bill
+				}else if (view == 4) { // view lunch box order
+					viewLunchBoxOrder(orderList);
+				}else if (view == 5) { // view order bill
 					
 				}
 
@@ -59,7 +55,7 @@ public class C206_CaseStudy {
 				System.out.println("1. Add user account for Parents/Secondary school students");
 				System.out.println("2. Add menu items");
 				System.out.println("3. Add monthly menu");
-				System.out.println("4. Add lunch box menu");
+				System.out.println("4. Add lunch box order");
 				System.out.println("5. Add order bill");
 
 				int add = Helper.readInt("Enter option to view selected item > ");
@@ -69,12 +65,8 @@ public class C206_CaseStudy {
 					addMenuItem(menuList);
 				} else if (add == 3) {  // add monthly menu 
 
-				} else if (add == 4) {
+				} else if (add == 4) { // add lunch box order
 					addLunchBoxOrder(orderList);
-				} else if (add == 5) {
-
-				} else if (add == 4) { // add lunch box menu 
-
 				} else if (add == 5) { // add order bill
 
 				}
@@ -84,7 +76,7 @@ public class C206_CaseStudy {
 				System.out.println("1. Delete user account for Parents/Secondary school students");
 				System.out.println("2. Delete menu items");
 				System.out.println("3. Delete monthly menu");
-				System.out.println("4. Delete lunch box menu");
+				System.out.println("4. Delete lunch box order");
 				System.out.println("5. Delete order bill");
 
 				int delete = Helper.readInt("Enter option to view selected item > ");
@@ -92,10 +84,9 @@ public class C206_CaseStudy {
 					deleteAccount(accounts);
 				}else if (delete == 2) { //delete menu items 
 					deleteMenuItem(menuList);
-
 				}else if (delete == 3) {
 					
-				}else if (delete ==4) {
+				}else if (delete ==4) { // delete lunch box order
 					deleteLunchBoxOrder(orderList);
 				}else if (delete == 5) {
 					
