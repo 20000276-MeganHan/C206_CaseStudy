@@ -8,17 +8,22 @@ public class C206_CaseStudy {
 	private static ArrayList<Account> accounts = new ArrayList<Account>();
 	private static ArrayList<Order> orderList = new ArrayList<Order>();
 	private static ArrayList<OrderBill> orderbillList= new ArrayList<OrderBill>();
+	private static ArrayList<Integer> studentidList = new ArrayList<Integer>();
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		accounts.add(new Account("Jane123x", "12345", "Parent"));
-		accounts.add(new Account("xxRoxy23", "45678", "Student", 20034561, 0.0));
-		accounts.add(new Account("Regina34", "67805", "Parent"));
-		accounts.add(new Account("Bob89", "90234", "Student", 20093321, 0.0));
+		accounts.add(new Account("Jane123x", "12345", "Parent", 20034561, 94304922));
+		accounts.add(new Account("xxRoxy23", "45678", "Student", 20034561, 0.0, 83293821));
+		accounts.add(new Account("Regina34", "67805", "Parent", 20093321, 93298320));
+		accounts.add(new Account("Bob89", "90234", "Student", 20093321, 0.0, 87873829));
 
 		menuList.add(new Menu("Western", "Carbonara", "Fruit punch", "Watermelon Slice", 5.00));
 		menuList.add(new Menu("Asian", "Chicken Rice", "Milo", "Pear Slice", 4.50));
 		menuList.add(new Menu("Vegeterian", "Vegeterian Bee Hoon", "Apple Juice", "Banana", 3.00));
+		
+		studentidList.add(20034561);
+		studentidList.add(20093321);
+		studentidList.add(20030291);
 
 		int option = 0;
 
@@ -118,21 +123,34 @@ public class C206_CaseStudy {
 	}
 
 	public static void addAccount(ArrayList<Account> accounts) {
+		Account newAcct = null;
+		int studentid = 0;
+		int mobileNo = 0;
 		String user = Helper.readString("Are you a student/ parent > ");
-		String username = Helper.readString("Enter username: ");
-		String password = Helper.readString("Enter password: ");
+		String username = Helper.readString("Enter username > ");
+		String password = Helper.readString("Enter password >  ");
+		if (user.equalsIgnoreCase("Parent")) {
+			studentid = Helper.readInt("Enter child's student id >");
+			mobileNo = Helper.readInt("Enter your mobile no > ");
+			 newAcct = new Account(username, password, user, studentid, mobileNo);
 
-		Account newAcct = new Account(username, password, user);
+		}else {
+			studentid = Helper.readInt("Enter your student id > ");
+			mobileNo = Helper.readInt("Enter your mobile no > ");
+			newAcct = new Account(username, password, user, studentid, 0.0, mobileNo);
+		}
+		 
 		accounts.add(newAcct);
 	}
 
 	public static void viewAccount(ArrayList<Account> accounts) {
-		String view = String.format("%-10s %-10s %s\n", "Username", "Password", "User");
+		String view = String.format("%-10s %-10s %10s %10D %d\n", "Username", "Password", "User", "Student ID", "Mobile No");
 		Helper.line(60, "-");
 		for (Account a : accounts) {
-			view += String.format("%-10s %-10s %s\n", a.getUsername(), a.getPassword(), a.getUser());
+			view += String.format("%-10s %-10s %s\n", a.getUsername(), a.getPassword(), a.getUser(), a.getStudentID(), a.getMobileNo());
 		}
 		System.out.println(view);
+		
 	}
 
 	public static void deleteAccount(ArrayList<Account> accounts) {
@@ -142,6 +160,18 @@ public class C206_CaseStudy {
 				accounts.remove(a);
 			}
 		}
+	}
+	
+	public static void updateAccount(ArrayList<Account> accounts) {
+		String username = Helper.readString("Enter your username > ");
+		for (Account a: accounts) {
+			if (username.equals(a.getUsername())) {
+				int mobileNo = Helper.readInt("Enter new mobile no > ");
+				a.setMobileNo(mobileNo);
+			}
+		}
+			
+		
 	}
 
 	public static void addMenuItem(ArrayList<Menu> menuList) {
