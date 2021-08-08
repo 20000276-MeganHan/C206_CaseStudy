@@ -13,6 +13,14 @@ public class C206_CaseStudyTest {
 	private Order lunchBoxOrder2;
 	private Order lunchBoxOrder3;
 	
+	private ArrayList<Account> accountList = new ArrayList<Account>();
+	private Account acc1;
+	private Account acc2;
+	private Account acc3;
+	private Account acc4;
+	
+	private ArrayList<Integer> studentidList = new ArrayList<Integer>();
+	
 	public C206_CaseStudyTest() {
 		super();
     }
@@ -22,6 +30,16 @@ public class C206_CaseStudyTest {
 	lunchBoxOrder1 = new Order(1, LocalDate.parse("2021-08-30"), "Carbonara", "Fruit punch", "Watermelon Slice");
 	lunchBoxOrder2 = new Order(2, LocalDate.parse("2021-08-24"), "Carbonara", "Fruit punch", "Watermelon Slice");
 	lunchBoxOrder3 = new Order(3, LocalDate.parse("2021-08-06"), "Carbonara", "Fruit punch", "Watermelon Slice");
+	
+	acc1 = new Account("reg234", "12345", "Parent", 20034553, 87832782);
+	acc2 = new Account("amanda456", "45677", "Parent", 20029321, 93032983);
+	acc3 = new Account("jackxoxo", "78323", "Student", 20034553, 0.0, 90382938); // error
+	acc4 = new Account("Lor34d", "90323", "Student", 20931324, 0.0, 81210391);
+	
+	studentidList.add(20034553);
+	studentidList.add(20029321);
+	studentidList.add(20931324);
+
 	}
 
 
@@ -142,6 +160,22 @@ public class C206_CaseStudyTest {
 		orderList.remove(0);
 		assertEquals("Check that orderList size is 1", 0, orderList.size());
 		
+	}
+	
+	public void doAddAcct() {
+		// Account list is not null, so that can add a new account 
+		// boundary 
+		assertNotNull("Check if there is valid account arraylist to add to?", accountList);
+		
+		// Given an empty list, after adding 1 account, the size of the list is 1
+		// The account just added is as same as the first order of the list 
+		// Test that new Account is added valid (for parents valid student id) 
+		accountList.add(acc1);
+		assertEquals("Check if accountList size is 1 upon validating student id", 1, accountList.size());
+		assertSame("Check the account has been added successfully", acc1, accountList.get(0));
+		
+		//
+
 	}
 	
 	@After
