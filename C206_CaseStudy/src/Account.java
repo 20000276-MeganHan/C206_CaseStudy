@@ -6,10 +6,11 @@ public class Account {
 	private double credit;
 	private int studentID;
 	
-	public Account(String username, String password, String user) {
+	public Account(String username, String password, String user, int studentID) {
 		this.username = username;
 		this.password = password;
 		this.user = "Parent";
+		this.studentID = studentID;
 	}
 	
 	public Account(String username, String password, String user, int studentID, double credit) {
