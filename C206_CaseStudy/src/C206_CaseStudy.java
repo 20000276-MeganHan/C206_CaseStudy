@@ -41,7 +41,7 @@ public class C206_CaseStudy {
 
 				int view = Helper.readInt("Enter option to view selected item > ");
 				if (view == 1) { // view accounts
-					viewAccount(accounts);
+					System.out.println(viewAccount(accounts));
 				} else if (view == 2) {
 
 				} else if (view == 2) { // view menu items
@@ -187,7 +187,7 @@ public class C206_CaseStudy {
 	}
 
 	public static String viewAccount(ArrayList<Account> accounts) {
-		String view = String.format("%-10s %-10s %-10s %-10d %d\n", "Username", "Password", "User", "Student ID",
+		String view = String.format("%-10s %-10s %-10s %-10s %s\n", "Username", "Password", "User", "Student ID",
 				"Mobile No");
 		Helper.line(60, "-");
 		for (Account a : accounts) {
