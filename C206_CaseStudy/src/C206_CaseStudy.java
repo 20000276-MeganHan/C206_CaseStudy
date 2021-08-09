@@ -43,11 +43,8 @@ public class C206_CaseStudy {
 				int view = Helper.readInt("Enter option to view selected item > ");
 				if (view == 1) { // view accounts
 					System.out.println(viewAccount(accounts));
-				} else if (view == 2) {
-
 				} else if (view == 2) { // view menu items
 					viewMenuItem(menuList);
-
 				} else if (view == 3) { // view monthly menu
 					viewMenu(monthlyMenu);
 				} else if (view == 4) { // view lunch box order
@@ -259,24 +256,24 @@ public class C206_CaseStudy {
 	}
 	
 	public static void createMenu(ArrayList<Menu>monthlyMenu) {
-		String cuisine = "";
-		String meal = "";
+		String cuisine = Helper.readString("Western / Asian / Vegeterian > ");
+		String meal = Helper.readString("Enter meal name: ");
 		for (Menu m:monthlyMenu) {
 			cuisine += m.getCuisine();
 			meal += m.getMeal();
 		}
 		
-		String drink = "";
+		String drink = Helper.readString("Enter choice of drink: ");
 		for (Menu m:monthlyMenu) {
 			drink += m.getDrink();
 		}
 		
-		String fruit = "";
+		String fruit = Helper.readString("Enter type of fruit: ");
 		for (Menu m:monthlyMenu) {
 			fruit += m.getFruit();
 		}
 		
-		double price = 0;
+		Double price = Helper.readDouble("Enter price of meal: ");
 		for (Menu m:monthlyMenu) {
 			price += m.getPrice();
 		}
@@ -285,15 +282,19 @@ public class C206_CaseStudy {
 	}
 	
 	public static void viewMenu(ArrayList<Menu>monthlyMenu) {
-		for(Menu m : monthlyMenu) {
-			m.displayMenu();
+		String view = String.format("%-10s %-20s %-15s %-18s %s\n", "Cuisine", "Meal", "Drink", "Fruit", "Price");
+		Helper.line(60, "=");
+		for (Menu m : monthlyMenu) {
+			view += String.format("%-10s %-20s %-15s %-18s %s\n", m.getCuisine(), m.getMeal(), m.getDrink(),
+					m.getFruit(), m.getPrice());
 		}
+		System.out.println(view);
 	}
 	
 	public static void deleteMenu(ArrayList<Menu> monthlyMenu) {
 		String cuisine = Helper.readString("Enter the cuisine: ");
 		for (Menu m:monthlyMenu) {
-			if(m.getMeal().equalsIgnoreCase(cuisine)) {
+			if(m.getCuisine().equalsIgnoreCase(cuisine)) {
 				monthlyMenu.remove(m);
 			}
 		}
