@@ -191,9 +191,29 @@ public class C206_CaseStudyTest {
 	}
 	
 	public void doViewAcct() {
+		// Test if AccountList is not null but empty - boundary 
+		assertNotNull("Test if there is valid Account arrayList to retrieve accounts", accountList);
+		
+		//test if the list of accounts retrieved from the SourceCentre is empty - boundary
+		String allAccts = C206_CaseStudy.viewAccount(accountList);
+		String testOutput = "";
+		assertEquals("Check that viewAllAcct", testOutput, allAccts);
+		
+		//Given an empty list, after adding 2 accounts, test if the size of the list is 2 - normal
+		C206_CaseStudy.addAccount(accountList, studentidList, acc1);
+		C206_CaseStudy.addAccount(accountList, studentidList, acc2);
+		assertEquals("Test that Accounts arrayList size is 2", 2, accountList.size());
+		
+		//test if the expected output String same as the list of accounts retrieved from the sourceCentre
+		allAccts = C206_CaseStudy.viewAccount(accountList);
+		testOutput += String.format("%-10s %-10s %-10s %-10d %d\n", "Username", "Password", "User", "Student ID","Mobile No");
+		testOutput += String.format("%-10s %-10s %-10s %-10d %d\n","reg234", "12345", "Parent", 20034553, 87832782);
+		testOutput += String.format("%-10s %-10s %-10s %-10d %d\n", "amanda456", "45677", "Parent", 20029321, 93032983);
+		
+		assertEquals("Test that viewAllAcct", testOutput, allAccts);
 		
 	}
-	
+	 
 	@After
 	public void tearDown() throws Exception {
 		lunchBoxOrder1 = null;
