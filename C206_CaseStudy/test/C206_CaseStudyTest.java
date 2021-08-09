@@ -318,7 +318,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that menuItem arraylist size is 2", 2, menuList.size());
 	}
 
-	public void doMenuItemTest() {
+	public void doViewMenuItemTest() {
 		// Test that menu item list is not null but empty (boundary)
 		assertNotNull("Test if there is valid menu item arrayList to retrieve the items", menuList);
 
