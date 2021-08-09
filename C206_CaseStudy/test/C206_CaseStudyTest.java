@@ -19,6 +19,11 @@ public class C206_CaseStudyTest {
 	private Account acc3;
 	private Account acc4;
 	
+	private ArrayList<OrderBill>orderbillList= new ArrayList<OrderBill>();
+	private OrderBill ob1;
+	private OrderBill ob2;
+	private OrderBill ob3;
+	
 	private ArrayList<Integer> studentidList = new ArrayList<Integer>();
 	
 	public C206_CaseStudyTest() {
@@ -35,6 +40,11 @@ public class C206_CaseStudyTest {
 	acc2 = new Account("amanda456", "45677", "Parent", 20029321, 93032983);
 	acc3 = new Account("jackxoxo", "78323", "Student", 20034553, 0.0, 90382938); // error
 	acc4 = new Account("Lor34d", "90323", "Student", 20931324, 0.0, 81210391);
+		
+	
+	ob1= new OrderBill(7260, 3.00 , 2, 6.00);
+	ob2= new OrderBill(5471, 2.50 , 3, 7.50);
+	ob3= new OrderBill(1527, 3.00 , 1, 3.00);
 	
 	studentidList.add(20034553);
 	studentidList.add(20029321);
@@ -212,6 +222,54 @@ public class C206_CaseStudyTest {
 		
 		assertEquals("Test that viewAllAcct", testOutput, allAccts);
 		
+	}
+		@Test
+	public void testAddOrderBill() {
+		// Item list is not null, so that can add a new item
+		assertNotNull("Test if there is valid OrderBill arraylist to add to", orderbillList);
+
+		// Given an empty list, after adding 1 item, the size of the list is 1
+		orderbillList.add(ob1);
+		assertEquals("Test if that orderbill arraylist size is 1?", 1, orderbillList.size());
+
+		// The item just added is as same as the first item of the list
+		assertSame("Test that orderbill is added same as 1st item of the list?", ob1, orderbillList.get(0));
+
+		// Add another item. test The size of the list is 2?
+		orderbillList.add(ob2);
+		assertEquals("Test that orderbill arraylist size is 2?", 2, orderbillList.size());
+	}
+	@Test
+	public void testviewOrderBill() {
+		// Test if Item list is not null but empty, so that can add a new item
+		assertNotNull("Test if there is valid orderbill arraylist to add to", orderbillList);
+
+		// test if the list of order bill retrieved is empty.
+		OrderBill OrderBill= orderbillList.get(0);
+		String testOutput = "";
+		assertEquals("Check that View orderbilllist", testOutput, OrderBill);
+
+		// Given an empty list, after adding 2 items, test if the size of the list is 2
+		orderbillList.add(ob1);
+		orderbillList.add(ob2);
+		assertEquals("Test if that orderbill arraylist size is 2?", 2, orderbillList.size());
+
+		//test if the Item list contain items and not null list
+		assertNotNull("Test if list contains the item added ", orderbillList);
+	}
+	@Test
+	public void testdeleteOrderBill() {
+		//Test to check orderbillList not empty and able to delete items
+		assertNotNull("Check if there are items in orderbillList ", orderbillList);
+		
+		//given list is not empty, delete selected item from the list
+		orderbillList.remove(0);
+		assertNotEquals("Check that orderbillList does not contain item that is removed", orderbillList.get(0));
+		
+		//Test that after adding to order bill list, able to delete immediately   
+		orderbillList.add(ob1);
+		orderbillList.remove(ob1);
+		assertNull("ob1 is not in the list ", ob1);
 	}
 	 
 	@After
