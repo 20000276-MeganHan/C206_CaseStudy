@@ -52,7 +52,7 @@ public class C206_CaseStudy {
 				} else if (view == 4) { // view lunch box order
 					viewLunchBoxOrder(orderList);
 				} else if (view == 5) { // view order bill
-
+					viewBill(orderbillList);
 				}
 
 			} else if (option == 2) {
@@ -73,6 +73,7 @@ public class C206_CaseStudy {
 				} else if (add == 4) { // add lunch box order
 					addLunchBoxOrder(orderList);
 				} else if (add == 5) { // add order bill
+					addBill(orderbillList);
 
 				}
 
@@ -94,6 +95,7 @@ public class C206_CaseStudy {
 				} else if (delete == 4) { // delete lunch box order
 					deleteLunchBoxOrder(orderList);
 				} else if (delete == 5) {
+					deleteBill(orderbillList);
 
 				}
 			}
