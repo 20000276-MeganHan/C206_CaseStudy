@@ -294,7 +294,7 @@ public class C206_CaseStudy {
 	public static void deleteMenu(ArrayList<Menu> monthlyMenu) {
 		String cuisine = Helper.readString("Enter the cuisine: ");
 		for (Menu m:monthlyMenu) {
-			if(m.getCuisine().equalsIgnoreCase(cuisine)) {
+			if (cuisine.equalsIgnoreCase(m.getCuisine())) {
 				monthlyMenu.remove(m);
 			}
 		}
