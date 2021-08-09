@@ -5,6 +5,7 @@ public class C206_CaseStudy {
 
 	private static final int OPTION_OUT = 4;
 	private static ArrayList<Menu> menuList = new ArrayList<Menu>();
+	private static ArrayList<Menu> monthlyMenu = new ArrayList<Menu>();
 	private static ArrayList<Account> accounts = new ArrayList<Account>();
 	private static ArrayList<Order> orderList = new ArrayList<Order>();
 	private static ArrayList<OrderBill> orderbillList = new ArrayList<OrderBill>();
@@ -48,7 +49,7 @@ public class C206_CaseStudy {
 					viewMenuItem(menuList);
 
 				} else if (view == 3) { // view monthly menu
-
+					viewMenu(monthlyMenu);
 				} else if (view == 4) { // view lunch box order
 					viewLunchBoxOrder(orderList);
 				} else if (view == 5) { // view order bill
@@ -70,7 +71,7 @@ public class C206_CaseStudy {
 				} else if (add == 2) { // add menu item
 					addMenuItem(menuList);
 				} else if (add == 3) { // add monthly menu
-
+					createMenu(monthlyMenu);
 				} else if (add == 4) { // add lunch box order
 					addLunchBoxOrder(orderList);
 				} else if (add == 5) { // add order bill
@@ -93,7 +94,7 @@ public class C206_CaseStudy {
 				} else if (delete == 2) { // delete menu items
 					deleteMenuItem(menuList);
 				} else if (delete == 3) {
-
+					deleteMenu(monthlyMenu);
 				} else if (delete == 4) { // delete lunch box order
 					deleteLunchBoxOrder(orderList);
 				} else if (delete == 5) {
@@ -254,6 +255,47 @@ public class C206_CaseStudy {
 				menuList.remove(m);
 			}
 
+		}
+	}
+	
+	public static void createMenu(ArrayList<Menu>monthlyMenu) {
+		String cuisine = "";
+		String meal = "";
+		for (Menu m:monthlyMenu) {
+			cuisine += m.getCuisine();
+			meal += m.getMeal();
+		}
+		
+		String drink = "";
+		for (Menu m:monthlyMenu) {
+			drink += m.getDrink();
+		}
+		
+		String fruit = "";
+		for (Menu m:monthlyMenu) {
+			fruit += m.getFruit();
+		}
+		
+		double price = 0;
+		for (Menu m:monthlyMenu) {
+			price += m.getPrice();
+		}
+		
+		monthlyMenu.add(new Menu(cuisine, meal, drink, fruit, price));
+	}
+	
+	public static void viewMenu(ArrayList<Menu>monthlyMenu) {
+		for(Menu m : monthlyMenu) {
+			m.displayMenu();
+		}
+	}
+	
+	public static void deleteMenu(ArrayList<Menu> monthlyMenu) {
+		String cuisine = Helper.readString("Enter the cuisine: ");
+		for (Menu m:monthlyMenu) {
+			if(m.getMeal().equalsIgnoreCase(cuisine)) {
+				monthlyMenu.remove(m);
+			}
 		}
 	}
 	
