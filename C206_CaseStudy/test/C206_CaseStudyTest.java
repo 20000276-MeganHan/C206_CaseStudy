@@ -170,24 +170,28 @@ public class C206_CaseStudyTest {
 		// Given an empty list, after adding 1 account, the size of the list is 1
 		// The account just added is as same as the first order of the list 
 		// Test that new Account is added valid (for parents valid student id) 
-		accountList.add(acc1);
+		C206_CaseStudy.addAccount(accountList, studentidList, acc1);
 		assertEquals("Check if accountList size is 1 upon validating student id", 1, accountList.size());
 		assertSame("Check the account has been added successfully", acc1, accountList.get(0));
 		
 		//Add another account (normal) 
 		//Test that the accountList size is 2
 		//Test that student id entered is valid 
-		accountList.add(acc2);
+		C206_CaseStudy.addAccount(accountList, studentidList, acc2);
 		assertEquals("Check if accountList size is 2 upon validating student id", 2, accountList.size());
 		assertSame("Check the account has been added successfully", acc2, accountList.get(1));
 		
 		// error 
 		// The student id entered was invalid 
-		accountList.add(acc3);
+		C206_CaseStudy.addAccount(accountList, studentidList, acc3);
 		
 		// check that the accountlist size is still 2 since student id validation failed
 		assertEquals("Check if the size of accountList is 2", 2, accountList.size());
 
+	}
+	
+	public void doViewAcct() {
+		
 	}
 	
 	@After
