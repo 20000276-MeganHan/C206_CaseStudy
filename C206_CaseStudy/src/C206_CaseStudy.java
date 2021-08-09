@@ -186,11 +186,11 @@ public class C206_CaseStudy {
 	}
 
 	public static String viewAccount(ArrayList<Account> accounts) {
-		String view = String.format("%-10s %-10s %10s %10D %d\n", "Username", "Password", "User", "Student ID",
+		String view = String.format("%-10s %-10s %-10s %-10d %d\n", "Username", "Password", "User", "Student ID",
 				"Mobile No");
 		Helper.line(60, "-");
 		for (Account a : accounts) {
-			view += String.format("%-10s %-10s %s\n", a.getUsername(), a.getPassword(), a.getUser(), a.getStudentID(),
+			view += String.format("%-10s %-10s %-10s %-10d %d\n", a.getUsername(), a.getPassword(), a.getUser(), a.getStudentID(),
 					a.getMobileNo());
 		}
 		return view;
