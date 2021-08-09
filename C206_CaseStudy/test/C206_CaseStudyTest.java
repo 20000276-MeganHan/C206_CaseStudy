@@ -235,6 +235,26 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that viewAllAcct", testOutput, allAccts);
 
 	}
+	
+	public void doDeleteAcctTest() {
+		// Account list is not null, so that new order can be added
+		assertNotNull("Check if there is valid Account list to add to ", accountList);
+		
+		//given an empty list, after adding 1 order, the size of the list is 1 - normal 
+		C206_CaseStudy.addAccount(accountList, studentidList, acc1);
+		assertEquals("Check that accounts list size is 1", 1, accountList.size());
+		
+		// Add another account and test accounts arrayList is 2
+		C206_CaseStudy.addAccount(accountList, studentidList, acc2);
+		assertEquals("Check that accounts list size is 2", 2, accountList.size());
+		
+		//Delete the first order from the arrayList and test if size is reduced to 1
+		C206_CaseStudy.deleteAccount(accountList, acc1);
+		assertEquals("Check that accounts list size is reduced to 1", 1, accountList.size());
+		
+		//Test that the correct account was deleted
+		assertNotEquals("Check that the correct account was deleted", acc1, accountList.get(0));
+	}
 
 	@Test
 	public void testAddOrderBill() {
