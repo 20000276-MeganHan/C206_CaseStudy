@@ -45,13 +45,14 @@ public class Menu {
 	public double getPrice() {
 		return price;
 	}
-//	public void setPrice() {
-//		this.price = price;
-//	}
+	
+	public void setPrice(double price) {
+		this.price = price;
+	}
 	
 	public void displayMenu() {
 		System.out.println(String.format("Cuisine:%-10s\nMeal:%-10s\nDrink:%-10s\nFruit:%-10s\nPrice:%-10d", getCuisine(),getMeal(),getDrink(),getFruit(),getPrice()));
 	}
-	
-	
+
+
 }

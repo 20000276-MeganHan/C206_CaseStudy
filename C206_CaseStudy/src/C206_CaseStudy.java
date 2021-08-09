@@ -249,6 +249,17 @@ public class C206_CaseStudy {
 
 		}
 	}
+	
+	public static void updateMenuItem(ArrayList<Menu> menuList) {
+		String meal = Helper.readString("Enter meal name: ");
+		for (Menu m : menuList) {
+			if (meal.equals(m.getMeal())) {
+				double price = Helper.readDouble("Enter new price for meal > ");
+				m.setPrice(price);
+			}
+		}
+
+	}
 
 	public static void addLunchBoxOrder(ArrayList<Order> orderList) {
 		setHeader("ADD LUNCH BOX ORDER");
