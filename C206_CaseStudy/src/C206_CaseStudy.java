@@ -65,7 +65,8 @@ public class C206_CaseStudy {
 
 				int add = Helper.readInt("Enter option to view selected item > ");
 				if (add == 1) { // add account
-					addAccount(accounts, studentidList);
+					Account newAcct = inputaddAcct();
+					addAccount(accounts, studentidList, newAcct);
 				} else if (add == 2) { // add menu item
 					addMenuItem(menuList);
 				} else if (add == 3) { // add monthly menu
@@ -124,12 +125,10 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 	}
 
-	public static void addAccount(ArrayList<Account> accounts, ArrayList<Integer> studentidList) {
-		boolean validSID = false;
-		boolean added = false;
-		Account newAcct = null;
+	public static Account inputaddAcct() {
 		int studentid = 0;
 		int mobileNo = 0;
+		Account newAcct = null;
 		String user = Helper.readString("Are you a student/ parent > ");
 		String username = Helper.readString("Enter username > ");
 		String password = Helper.readString("Enter password >  ");
@@ -138,9 +137,7 @@ public class C206_CaseStudy {
 			for (Integer i : studentidList) {
 				if (studentid == i) {
 					mobileNo = Helper.readInt("Enter your mobile no > ");
-					validSID = true;
 					newAcct = new Account(username, password, user, studentid, mobileNo);
-					added = true;
 				}
 			}
 		} else {
@@ -148,20 +145,41 @@ public class C206_CaseStudy {
 			for (Integer i : studentidList) {
 				if (studentid == i) {
 					mobileNo = Helper.readInt("Enter your mobile no > ");
-					validSID = true;
 					newAcct = new Account(username, password, user, studentid, 0.0, mobileNo);
+				}
+				
+
+			}
+		}
+		return newAcct;
+	}
+
+	public static void addAccount(ArrayList<Account> accounts, ArrayList<Integer> studentidList, Account newAcct) {
+		boolean validSID = false;
+		boolean added = false;
+
+		if (newAcct.getUser().equalsIgnoreCase("Parent")) {
+			for (Integer i : studentidList) {
+				if (newAcct.getStudentID() == i) {
+					validSID = true;
+					added = true;
+				}
+			}
+		} else {
+			for (Integer i : studentidList) {
+				if (newAcct.getStudentID() == i) {
+					validSID = true;
 					added = true;
 				}
 			}
 		}
-		
 		if (added == true) {
 			accounts.add(newAcct);
 			System.out.println("Added account successfully!");
-		}else if (validSID == false) {
+		} else if (validSID == false) {
 			System.out.println("Student ID entered invalid");
 		}
-		
+
 		if (added == false) {
 			System.out.println("Account is not added!");
 		}
