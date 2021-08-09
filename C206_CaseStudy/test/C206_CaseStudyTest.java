@@ -258,10 +258,13 @@ public class C206_CaseStudyTest {
 		// Test if Item list is not null but empty, so that can add a new item
 		assertNotNull("Test if there is valid orderbill arraylist to add to", orderbillList);
 
+<<<<<<< HEAD
 		// test if the list of order bill retrieved is empty.
 		OrderBill OrderBill = orderbillList.get(0);
 		String testOutput = "";
 		assertEquals("Check that View orderbilllist", testOutput, OrderBill);
+=======
+>>>>>>> branch 'master' of https://github.com/20000276-MeganHan/C206_CaseStudy.git
 
 		// Given an empty list, after adding 2 items, test if the size of the list is 2
 		orderbillList.add(ob1);
@@ -276,15 +279,20 @@ public class C206_CaseStudyTest {
 	public void testdeleteOrderBill() {
 		// Test to check orderbillList not empty and able to delete items
 		assertNotNull("Check if there are items in orderbillList ", orderbillList);
+<<<<<<< HEAD
 
 		// given list is not empty, delete selected item from the list
 		orderbillList.remove(0);
 		assertNotEquals("Check that orderbillList does not contain item that is removed", orderbillList.get(0));
 
 		// Test that after adding to order bill list, able to delete immediately
+=======
+		
+		//Test that after adding to order bill list, able to delete immediately   
+>>>>>>> branch 'master' of https://github.com/20000276-MeganHan/C206_CaseStudy.git
 		orderbillList.add(ob1);
 		orderbillList.remove(ob1);
-		assertNull("ob1 is not in the list ", ob1);
+		assertEquals("ob1 is not in the list leaving the list to have 0 order bills ",0,  orderbillList.size());
 	}
 
 	public void doAddMenuItemTest() {

@@ -41,7 +41,7 @@ public class C206_CaseStudy {
 
 				int view = Helper.readInt("Enter option to view selected item > ");
 				if (view == 1) { // view accounts
-					viewAccount(accounts);
+					System.out.println(viewAccount(accounts));
 				} else if (view == 2) {
 
 				} else if (view == 2) { // view menu items
@@ -88,7 +88,8 @@ public class C206_CaseStudy {
 
 				int delete = Helper.readInt("Enter option to view selected item > ");
 				if (delete == 1) { // delete account
-					deleteAccount(accounts);
+					Account delAcc = inputDelete();
+					deleteAccount(accounts, delAcc);
 				} else if (delete == 2) { // delete menu items
 					deleteMenuItem(menuList);
 				} else if (delete == 3) {
@@ -186,7 +187,7 @@ public class C206_CaseStudy {
 	}
 
 	public static String viewAccount(ArrayList<Account> accounts) {
-		String view = String.format("%-10s %-10s %-10s %-10d %d\n", "Username", "Password", "User", "Student ID",
+		String view = String.format("%-10s %-10s %-10s %-10s %s\n", "Username", "Password", "User", "Student ID",
 				"Mobile No");
 		Helper.line(60, "-");
 		for (Account a : accounts) {
@@ -196,14 +197,20 @@ public class C206_CaseStudy {
 		return view;
 
 	}
-
-	public static void deleteAccount(ArrayList<Account> accounts) {
+	
+	public static Account inputDelete() {
 		String username = Helper.readString("Enter your username > ");
+		Account delAcc = null;
 		for (Account a : accounts) {
 			if (username.equals(a.getUsername())) {
-				accounts.remove(a);
+				delAcc = a;
 			}
 		}
+		return delAcc;
+	}
+
+	public static void deleteAccount(ArrayList<Account> accounts, Account delAcct ) {
+		accounts.remove(delAcct);
 	}
 
 	public static void updateAccount(ArrayList<Account> accounts) {
