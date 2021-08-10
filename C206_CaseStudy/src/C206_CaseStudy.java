@@ -210,6 +210,16 @@ public class C206_CaseStudy {
 
 		Menu newMenuItem = new Menu(cuisine, meal, drink, fruit, price);
 		menuList.add(newMenuItem);
+		boolean isAdded = true;
+		
+		for (Menu m : menuList) {
+			if(isAdded == true) {
+				System.out.println("Menu Item successfully added");
+				
+			}else {
+				System.out.println("Menu Item add failed");
+			}
+		}
 
 	}
 
