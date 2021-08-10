@@ -187,7 +187,9 @@ public class C206_CaseStudy {
 	}
 
 	public static void deleteAccount(ArrayList<Account> accounts, Account delAcct) {
+		String username = delAcct.getUsername();
 		accounts.remove(delAcct);
+		System.out.println("Deleted account " + username + "!");
 	}
 
 	public static void updateAccount(ArrayList<Account> accounts) {
