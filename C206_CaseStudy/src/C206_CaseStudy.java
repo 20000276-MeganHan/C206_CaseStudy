@@ -55,6 +55,7 @@ public class C206_CaseStudy {
 					viewBill(orderbillList);
 				}
 
+				
 			} else if (option == 2) {
 				C206_CaseStudy.setHeader("Select option to view");
 				System.out.println("1. Add user account for Parents/Secondary school students");
