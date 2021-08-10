@@ -439,7 +439,7 @@ public class C206_CaseStudy {
 					if (check == 'Y') {
 						odr = order;
 					} else {
-						odr.printInfo();
+						order.printInfo();
 					}
 				}
 				System.out.println("No order on this date");
