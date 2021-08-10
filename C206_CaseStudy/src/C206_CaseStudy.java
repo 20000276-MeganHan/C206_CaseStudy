@@ -444,18 +444,16 @@ public class C206_CaseStudy {
 		String date = Helper.readString("Enter order date to cancel > ");
 		if (LocalDate.parse(date).getDayOfYear() - LocalDate.now().getDayOfYear() > 0) {
 			for (Order order : orderList) {
-				if (LocalDate.parse(date) == odr.getDate()) {
-					if (LocalDate.parse(date).equals(order.getDate())) {
-						order.printInfo();
-						char check = Helper.readChar("Do you want to cancel order? (Y/N) > ");
-						if (check == 'Y') {
-							odr = order;
-						} else {
-							order.printInfo();
-						}
+				if (LocalDate.parse(date).equals(order.getDate())) {
+					order.printInfo();
+					char check = Helper.readChar("Do you want to cancel order? (Y/N) > ");
+					if (check == 'Y') {
+						odr = order;
 					} else {
-						System.out.println("No order on this date");
+						order.printInfo();
 					}
+				} else {
+					System.out.println("No order on this date");
 				}
 			}
 		} else {
