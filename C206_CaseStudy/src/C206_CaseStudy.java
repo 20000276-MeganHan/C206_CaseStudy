@@ -155,15 +155,19 @@ public class C206_CaseStudy {
 
 	public static void addAccount(ArrayList<Account> accounts, ArrayList<Integer> studentidList, Account newAcct) {
 		boolean validSID = false;
-		boolean added = false;
-		
+		boolean uniqueUN = false;
 		for (Integer i: studentidList) {
 			if (newAcct.getStudentID() == i) {
 				validSID = true;
 			}
 		}
 		
-		if (validSID == true) {
+		for (Account a : accounts) {
+			if (!a.getUsername().equals(newAcct.getUsername())) {
+				uniqueUN = true;
+			}
+		}
+		if (validSID == true && uniqueUN == true && newAcct.getStudentID() != 0) {
 			accounts.add(newAcct);
 			System.out.println("Account added successfully!");
 		}else 
@@ -198,15 +202,23 @@ public class C206_CaseStudy {
 		accounts.remove(delAcct);
 		System.out.println("Deleted account " + username + "!");
 	}
+	
 
 	public static void updateAccount(ArrayList<Account> accounts) {
+		boolean updated = false;
 		String username = Helper.readString("Enter your username > ");
 		for (Account a : accounts) {
 			if (username.equals(a.getUsername())) {
 				int mobileNo = Helper.readInt("Enter new mobile no > ");
 				a.setMobileNo(mobileNo);
+				updated = true;
 			}
 		}
+		
+		if (updated == true) {
+			System.out.println("Updated successfully");
+		}else 
+			System.out.println("Update failed!");
 
 	}
 
