@@ -417,6 +417,7 @@ public class C206_CaseStudy {
 		}
 	}
 	
+	
 	public static boolean doFound(ArrayList<Order> orderList, LocalDate date) {
 		boolean isFound = false;
 		
