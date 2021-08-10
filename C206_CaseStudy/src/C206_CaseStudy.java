@@ -61,7 +61,7 @@ public class C206_CaseStudy {
 				System.out.println("4. Add lunch box order");
 				System.out.println("5. Add order bill");
 
-				int add = Helper.readInt("Enter option to view selected item > ");
+				int add = Helper.readInt("Enter option to add selected item > ");
 				if (add == 1) { // add account
 					Account newAcct = inputaddAcct();
 					addAccount(accounts, studentidList, newAcct);
@@ -84,7 +84,7 @@ public class C206_CaseStudy {
 				System.out.println("4. Delete lunch box order");
 				System.out.println("5. Delete order bill");
 
-				int delete = Helper.readInt("Enter option to view selected item > ");
+				int delete = Helper.readInt("Enter option to delete selected item > ");
 				if (delete == 1) { // delete account
 					Account delAcc = inputDelete();
 					deleteAccount(accounts, delAcc);
@@ -105,6 +105,16 @@ public class C206_CaseStudy {
 				System.out.println("3. Update monthly menu");
 				System.out.println("4. Update lunch box order");
 				System.out.println("5. Update order bill");
+
+				int update = Helper.readInt("Enter option to update selected item > ");
+				if (update == 1) { // update account
+					updateAccount(accounts);
+				} else if (update == 2) { // update menu items
+				} else if (update == 3) {
+				} else if (update == 4) { // update lunch box order
+				} else if (update == 5) {
+
+				}
 			}
 
 		}
@@ -120,6 +130,7 @@ public class C206_CaseStudy {
 		System.out.println("2. Add");
 		System.out.println("3. Delete");
 		System.out.println("4. Quit");
+		System.out.println("5. Update");
 
 		Helper.line(80, "-");
 	}
