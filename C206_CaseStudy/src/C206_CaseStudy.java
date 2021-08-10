@@ -133,23 +133,16 @@ public class C206_CaseStudy {
 		String password = Helper.readString("Enter password >  ");
 		if (user.equalsIgnoreCase("Parent")) {
 			studentid = Helper.readInt("Enter child's student id >");
-			for (Integer i : studentidList) {
-				if (studentid == i) {
-					mobileNo = Helper.readInt("Enter your mobile no > ");
-					newAcct = new Account(username, password, user, studentid, mobileNo);
-				}
-			}
-		} else {
-			studentid = Helper.readInt("Enter your student id > ");
-			for (Integer i : studentidList) {
-				if (studentid == i) {
-					mobileNo = Helper.readInt("Enter your mobile no > ");
-					newAcct = new Account(username, password, user, studentid, 0.0, mobileNo);
-				}
-				
-
-			}
+			mobileNo = Helper.readInt("Enter your mobile no > ");
+			newAcct = new Account(username, password, user, studentid, mobileNo);
 		}
+
+		else {
+			studentid = Helper.readInt("Enter your student id > ");
+			mobileNo = Helper.readInt("Enter your mobile no > ");
+			newAcct = new Account(username, password, user, studentid, 0.0, mobileNo);
+		}
+
 		return newAcct;
 	}
 
@@ -189,13 +182,13 @@ public class C206_CaseStudy {
 				"Mobile No");
 		Helper.line(60, "-");
 		for (Account a : accounts) {
-			view += String.format("%-10s %-10s %-10s %-10d %d\n", a.getUsername(), a.getPassword(), a.getUser(), a.getStudentID(),
-					a.getMobileNo());
+			view += String.format("%-10s %-10s %-10s %-10d %d\n", a.getUsername(), a.getPassword(), a.getUser(),
+					a.getStudentID(), a.getMobileNo());
 		}
 		return view;
 
 	}
-	
+
 	public static Account inputDelete() {
 		String username = Helper.readString("Enter your username > ");
 		Account delAcc = null;
@@ -207,7 +200,7 @@ public class C206_CaseStudy {
 		return delAcc;
 	}
 
-	public static void deleteAccount(ArrayList<Account> accounts, Account delAcct ) {
+	public static void deleteAccount(ArrayList<Account> accounts, Account delAcct) {
 		accounts.remove(delAcct);
 	}
 
@@ -254,7 +247,7 @@ public class C206_CaseStudy {
 
 		}
 	}
-	
+
 	public static void updateMenuItem(ArrayList<Menu> menuList) {
 		String meal = Helper.readString("Enter meal name: ");
 		for (Menu m : menuList) {
@@ -265,34 +258,34 @@ public class C206_CaseStudy {
 		}
 
 	}
-	
-	public static void createMenu(ArrayList<Menu>monthlyMenu) {
+
+	public static void createMenu(ArrayList<Menu> monthlyMenu) {
 		String cuisine = Helper.readString("Western / Asian / Vegeterian > ");
 		String meal = Helper.readString("Enter meal name: ");
-		for (Menu m:monthlyMenu) {
+		for (Menu m : monthlyMenu) {
 			cuisine += m.getCuisine();
 			meal += m.getMeal();
 		}
-		
+
 		String drink = Helper.readString("Enter choice of drink: ");
-		for (Menu m:monthlyMenu) {
+		for (Menu m : monthlyMenu) {
 			drink += m.getDrink();
 		}
-		
+
 		String fruit = Helper.readString("Enter type of fruit: ");
-		for (Menu m:monthlyMenu) {
+		for (Menu m : monthlyMenu) {
 			fruit += m.getFruit();
 		}
-		
+
 		Double price = Helper.readDouble("Enter price of meal: ");
-		for (Menu m:monthlyMenu) {
+		for (Menu m : monthlyMenu) {
 			price += m.getPrice();
 		}
-		
+
 		monthlyMenu.add(new Menu(cuisine, meal, drink, fruit, price));
 	}
-	
-	public static void viewMenu(ArrayList<Menu>monthlyMenu) {
+
+	public static void viewMenu(ArrayList<Menu> monthlyMenu) {
 		String view = String.format("%-10s %-20s %-15s %-18s %s\n", "Cuisine", "Meal", "Drink", "Fruit", "Price");
 		Helper.line(60, "=");
 		for (Menu m : monthlyMenu) {
@@ -301,17 +294,15 @@ public class C206_CaseStudy {
 		}
 		System.out.println(view);
 	}
-	
+
 	public static void deleteMenu(ArrayList<Menu> monthlyMenu) {
 		String cuisine = Helper.readString("Enter the cuisine: ");
-		for (Menu m:monthlyMenu) {
+		for (Menu m : monthlyMenu) {
 			if (cuisine.equalsIgnoreCase(m.getCuisine())) {
 				monthlyMenu.remove(m);
 			}
 		}
 	}
-	
-	
 
 	public static void addLunchBoxOrder(ArrayList<Order> orderList) {
 		setHeader("ADD LUNCH BOX ORDER");
