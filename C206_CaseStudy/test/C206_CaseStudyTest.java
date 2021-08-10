@@ -179,8 +179,8 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that orderList size is 1", 0, orderList.size());
 
 	}
-
-	public void doAddAcct() {
+	@Test
+	public void doAddAcctTest() {
 		// Account list is not null, so that can add a new account
 		// boundary
 		assertNotNull("Check if there is valid account arraylist to add to?", accountList);
@@ -207,8 +207,8 @@ public class C206_CaseStudyTest {
 		assertEquals("Check if the size of accountList is 2", 2, accountList.size());
 
 	}
-
-	public void doViewAcct() {
+	@Test
+	public void doViewAcctTest() {
 		// Test if AccountList is not null but empty - boundary
 		assertNotNull("Test if there is valid Account arrayList to retrieve accounts", accountList);
 
@@ -235,7 +235,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that viewAllAcct", testOutput, allAccts);
 
 	}
-	
+	@Test
 	public void doDeleteAcctTest() {
 		// Account list is not null, so that new order can be added
 		assertNotNull("Check if there is valid Account list to add to ", accountList);
