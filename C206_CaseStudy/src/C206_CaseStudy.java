@@ -98,7 +98,7 @@ public class C206_CaseStudy {
 					deleteBill(orderbillList);
 
 				}
-			}else if (option == 4) {
+			} else if (option == 4) {
 				C206_CaseStudy.setHeader("Select option to update");
 				System.out.println("1. Update user account for Parents/Secondary school students");
 				System.out.println("2. Update menu items");
@@ -156,17 +156,17 @@ public class C206_CaseStudy {
 	public static void addAccount(ArrayList<Account> accounts, ArrayList<Integer> studentidList, Account newAcct) {
 		boolean validSID = false;
 		boolean added = false;
-		
-		for (Integer i: studentidList) {
+
+		for (Integer i : studentidList) {
 			if (newAcct.getStudentID() == i) {
 				validSID = true;
 			}
 		}
-		
+
 		if (validSID == true) {
 			accounts.add(newAcct);
 			System.out.println("Account added successfully!");
-		}else 
+		} else
 			System.out.println("Invalid student ID, account is not ADDED!");
 	}
 
@@ -198,7 +198,6 @@ public class C206_CaseStudy {
 		accounts.remove(delAcct);
 		System.out.println("Deleted account " + username + "!");
 	}
-	
 
 	public static void updateAccount(ArrayList<Account> accounts) {
 		boolean updated = false;
@@ -210,10 +209,10 @@ public class C206_CaseStudy {
 				updated = true;
 			}
 		}
-		
+
 		if (updated == true) {
 			System.out.println("Updated successfully");
-		}else 
+		} else
 			System.out.println("Update failed!");
 
 	}
@@ -229,19 +228,19 @@ public class C206_CaseStudy {
 		Menu newMenuItem = new Menu(cuisine, meal, drink, fruit, price);
 		menuList.add(newMenuItem);
 		boolean isAdded = true;
-		
+
 		for (Menu m : menuList) {
-			if(isAdded == true) {
-				 output = ("Menu Item successfully added");
-				
-			}else {
-				 output = ("Menu Item add failed");
+			if (isAdded == true) {
+				output = ("Menu Item successfully added");
+
+			} else {
+				output = ("Menu Item add failed");
 			}
 
 		}
-		
+
 		System.out.println(output);
-		
+
 	}
 
 	public static void viewMenuItem(ArrayList<Menu> menuList) {
@@ -261,21 +260,21 @@ public class C206_CaseStudy {
 		for (Menu m : menuList) {
 			if (meal.equals(m.getMeal())) {
 				menuList.remove(m);
-				
+
 				boolean isAdded = true;
-				
+
 				for (Menu m1 : menuList) {
-					if(isAdded == true) {
-						 output = ("Menu Item successfully added");
-						
-					}else {
-						 output = ("Menu Item add failed");
+					if (isAdded == true) {
+						output = ("Menu Item successfully added");
+
+					} else {
+						output = ("Menu Item add failed");
 					}
 
 				}
-				
+
 				System.out.println(output);
-				
+
 			}
 
 		}
@@ -340,13 +339,15 @@ public class C206_CaseStudy {
 	public static Order inputOrder() {
 		Order odr = null;
 		String dateOfOrder = Helper.readString("Enter the date to have the lunch box > ");
-		if (LocalDate.parse(dateOfOrder).getDayOfYear() - LocalDate.now().getDayOfYear() > 0 && LocalDate.parse(dateOfOrder).getMonth() == LocalDate.now().getMonth()) {
+		if (LocalDate.parse(dateOfOrder).getDayOfYear() - LocalDate.now().getDayOfYear() > 0
+				&& LocalDate.parse(dateOfOrder).getMonth() == LocalDate.now().getMonth()) {
 			viewMenuItem(menuList);
 			String cuisine = Helper.readString("Enter cuisine > ");
 			if (!cuisine.isEmpty()) {
 				for (Menu m : menuList) {
 					if (cuisine.equalsIgnoreCase(m.getCuisine())) {
-						odr = new Order(orderList.size() + 1, LocalDate.parse(dateOfOrder), m.getMeal(), m.getDrink(), m.getFruit());
+						odr = new Order(orderList.size() + 1, LocalDate.parse(dateOfOrder), m.getMeal(), m.getDrink(),
+								m.getFruit());
 					}
 				}
 			} else {
@@ -357,7 +358,7 @@ public class C206_CaseStudy {
 		}
 		return odr;
 	}
-	
+
 	public static void addLunchBoxOrder(ArrayList<Order> orderList, Order odr) {
 		setHeader("ADD LUNCH BOX ORDER");
 		if (odr != null) {
@@ -373,25 +374,26 @@ public class C206_CaseStudy {
 			odr.printInfo();
 		}
 	}
-	
+
 	public static boolean doUpdate(ArrayList<Order> orderList, LocalDate date, String cuisine) {
 		boolean isUpdated = false;
-		
+
 		for (Order odr : orderList) {
-			if (date == odr.getDate() && !cuisine.isEmpty()) {
+			if (date.equals(odr.getDate()) && !cuisine.isEmpty()) {
 				for (Menu m : menuList) {
 					if (cuisine.equalsIgnoreCase(m.getCuisine())) {
-					odr.setMeal(m.getMeal());
-					odr.setDrink(m.getDrink());
-					odr.setFruit(m.getFruit());
-					
-					isUpdated = true;
+						odr.setMeal(m.getMeal());
+						odr.setDrink(m.getDrink());
+						odr.setFruit(m.getFruit());
+
+						isUpdated = true;
 					}
 				}
 			}
 		}
 		return isUpdated;
 	}
+
 	public static void updateLunchBoxOrder(ArrayList<Order> orderList) {
 		setHeader("UPDATE LUNCH BOX ORDERS");
 		String dateOfOrder = Helper.readString("Enter the date > ");
@@ -401,7 +403,7 @@ public class C206_CaseStudy {
 				viewMenuItem(menuList);
 				String cuisine = Helper.readString("Enter cuisine > ");
 				boolean isUpdated = doUpdate(orderList, LocalDate.parse(dateOfOrder), cuisine);
-				
+
 				if (isUpdated == true) {
 					System.out.println("Lunch Box Order Updated");
 				} else {
@@ -414,10 +416,10 @@ public class C206_CaseStudy {
 			System.out.println("Lunch box Order is unable to update");
 		}
 	}
-	
+
 	public static boolean doFound(ArrayList<Order> orderList, LocalDate date) {
 		boolean isFound = false;
-		
+
 		for (Order odr : orderList) {
 			if (date == odr.getDate()) {
 				isFound = true;
@@ -432,21 +434,25 @@ public class C206_CaseStudy {
 		if (LocalDate.parse(date).getDayOfYear() - LocalDate.now().getDayOfYear() > 0) {
 			for (Order order : orderList) {
 				if (LocalDate.parse(date) == odr.getDate()) {
-					order.printInfo();
-					char check = Helper.readChar("Do you want to cancel order? (Y/N) > ");
-					if (check == 'Y') {
-						odr = order;
+					if (LocalDate.parse(date).equals(order.getDate())) {
+						order.printInfo();
+						char check = Helper.readChar("Do you want to cancel order? (Y/N) > ");
+						if (check == 'Y') {
+							odr = order;
+						} else {
+							order.printInfo();
+						}
 					} else {
-						odr.printInfo();
+						System.out.println("No order on this date");
 					}
 				}
-				System.out.println("No order on this date");
 			}
+		} else {
 			System.out.println("Cancellation Failed");
 		}
 		return odr;
 	}
-	
+
 	public static void deleteLunchBoxOrder(ArrayList<Order> orderList, Order odr) {
 		setHeader("DELETE LUNCH BOX ORDERS");
 		if (odr != null) {
@@ -497,5 +503,3 @@ public class C206_CaseStudy {
 	}
 
 }
-
-
