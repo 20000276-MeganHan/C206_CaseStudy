@@ -44,7 +44,7 @@ public class C206_CaseStudyTest {
 
 		acc1 = new Account("reg234", "12345", "Parent", 20034553, 87832782);
 		acc2 = new Account("amanda456", "45677", "Parent", 20029321, 93032983);
-		acc3 = new Account("jackxoxo", "78323", "Student", 20034553, 0.0, 90382938); // error
+		acc3 = new Account("jackxoxo", "78323", "Student", 12345678, 0.0, 90382938); // error
 		acc4 = new Account("Lor34d", "90323", "Student", 20931324, 0.0, 81210391);
 
 		ob1 = new OrderBill(7260, 3.00, 2, 6.00);
@@ -215,7 +215,8 @@ public class C206_CaseStudyTest {
 		// test if the list of accounts retrieved from the SourceCentre is empty -
 		// boundary
 		String allAccts = C206_CaseStudy.viewAccount(accountList);
-		String testOutput = "";
+		String testOutput = String.format("%-10s %-10s %-10s %-10s %s\n", "Username", "Password", "User", "Student ID",
+				"Mobile No");
 		assertEquals("Check that viewAllAcct", testOutput, allAccts);
 
 		// Given an empty list, after adding 2 accounts, test if the size of the list is
@@ -227,8 +228,8 @@ public class C206_CaseStudyTest {
 		// test if the expected output String same as the list of accounts retrieved
 		// from the sourceCentre
 		allAccts = C206_CaseStudy.viewAccount(accountList);
-		testOutput += String.format("%-10s %-10s %-10s %-10d %d\n", "Username", "Password", "User", "Student ID",
-				"Mobile No");
+//		testOutput += String.format("%-10s %-10s %-10s %-10d %d\n", "Username", "Password", "User", "Student ID",
+//				"Mobile No");
 		testOutput += String.format("%-10s %-10s %-10s %-10d %d\n", "reg234", "12345", "Parent", 20034553, 87832782);
 		testOutput += String.format("%-10s %-10s %-10s %-10d %d\n", "amanda456", "45677", "Parent", 20029321, 93032983);
 
