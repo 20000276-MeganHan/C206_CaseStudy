@@ -5,6 +5,7 @@ public class C206_CaseStudy {
 
 	private static final int OPTION_OUT = 4;
 	private static ArrayList<Menu> menuList = new ArrayList<Menu>();
+	private static ArrayList<Menu> monthlyMenu = new ArrayList<Menu>();
 	private static ArrayList<Account> accounts = new ArrayList<Account>();
 	private static ArrayList<Order> orderList = new ArrayList<Order>();
 	private static ArrayList<OrderBill> orderbillList = new ArrayList<OrderBill>();
@@ -42,13 +43,10 @@ public class C206_CaseStudy {
 				int view = Helper.readInt("Enter option to view selected item > ");
 				if (view == 1) { // view accounts
 					System.out.println(viewAccount(accounts));
-				} else if (view == 2) {
-
 				} else if (view == 2) { // view menu items
 					viewMenuItem(menuList);
-
 				} else if (view == 3) { // view monthly menu
-
+					viewMenu(monthlyMenu);
 				} else if (view == 4) { // view lunch box order
 					viewLunchBoxOrder(orderList);
 				} else if (view == 5) { // view order bill
@@ -70,7 +68,7 @@ public class C206_CaseStudy {
 				} else if (add == 2) { // add menu item
 					addMenuItem(menuList);
 				} else if (add == 3) { // add monthly menu
-
+					createMenu(monthlyMenu);
 				} else if (add == 4) { // add lunch box order
 					addLunchBoxOrder(orderList, inputOrder());
 				} else if (add == 5) { // add order bill
@@ -93,7 +91,7 @@ public class C206_CaseStudy {
 				} else if (delete == 2) { // delete menu items
 					deleteMenuItem(menuList);
 				} else if (delete == 3) {
-
+					deleteMenu(monthlyMenu);
 				} else if (delete == 4) { // delete lunch box order
 					deleteLunchBoxOrder(orderList, inputDeleteOrder());
 				} else if (delete == 5) {
@@ -135,55 +133,34 @@ public class C206_CaseStudy {
 		String password = Helper.readString("Enter password >  ");
 		if (user.equalsIgnoreCase("Parent")) {
 			studentid = Helper.readInt("Enter child's student id >");
-			for (Integer i : studentidList) {
-				if (studentid == i) {
-					mobileNo = Helper.readInt("Enter your mobile no > ");
-					newAcct = new Account(username, password, user, studentid, mobileNo);
-				}
-			}
-		} else {
-			studentid = Helper.readInt("Enter your student id > ");
-			for (Integer i : studentidList) {
-				if (studentid == i) {
-					mobileNo = Helper.readInt("Enter your mobile no > ");
-					newAcct = new Account(username, password, user, studentid, 0.0, mobileNo);
-				}
-				
-
-			}
+			mobileNo = Helper.readInt("Enter your mobile no > ");
+			newAcct = new Account(username, password, user, studentid, mobileNo);
 		}
+
+		else {
+			studentid = Helper.readInt("Enter your student id > ");
+			mobileNo = Helper.readInt("Enter your mobile no > ");
+			newAcct = new Account(username, password, user, studentid, 0.0, mobileNo);
+		}
+
 		return newAcct;
 	}
 
 	public static void addAccount(ArrayList<Account> accounts, ArrayList<Integer> studentidList, Account newAcct) {
 		boolean validSID = false;
 		boolean added = false;
-
-		if (newAcct.getUser().equalsIgnoreCase("Parent")) {
-			for (Integer i : studentidList) {
-				if (newAcct.getStudentID() == i) {
-					validSID = true;
-					added = true;
-				}
-			}
-		} else {
-			for (Integer i : studentidList) {
-				if (newAcct.getStudentID() == i) {
-					validSID = true;
-					added = true;
-				}
+		
+		for (Integer i: studentidList) {
+			if (newAcct.getStudentID() == i) {
+				validSID = true;
 			}
 		}
-		if (added == true) {
+		
+		if (validSID == true) {
 			accounts.add(newAcct);
-			System.out.println("Added account successfully!");
-		} else if (validSID == false) {
-			System.out.println("Student ID entered invalid");
-		}
-
-		if (added == false) {
-			System.out.println("Account is not added!");
-		}
+			System.out.println("Account added successfully!");
+		}else 
+			System.out.println("Invalid student ID, account is not ADDED!");
 	}
 
 	public static String viewAccount(ArrayList<Account> accounts) {
@@ -191,13 +168,13 @@ public class C206_CaseStudy {
 				"Mobile No");
 		Helper.line(60, "-");
 		for (Account a : accounts) {
-			view += String.format("%-10s %-10s %-10s %-10d %d\n", a.getUsername(), a.getPassword(), a.getUser(), a.getStudentID(),
-					a.getMobileNo());
+			view += String.format("%-10s %-10s %-10s %-10d %d\n", a.getUsername(), a.getPassword(), a.getUser(),
+					a.getStudentID(), a.getMobileNo());
 		}
 		return view;
 
 	}
-	
+
 	public static Account inputDelete() {
 		String username = Helper.readString("Enter your username > ");
 		Account delAcc = null;
@@ -209,8 +186,10 @@ public class C206_CaseStudy {
 		return delAcc;
 	}
 
-	public static void deleteAccount(ArrayList<Account> accounts, Account delAcct ) {
+	public static void deleteAccount(ArrayList<Account> accounts, Account delAcct) {
+		String username = delAcct.getUsername();
 		accounts.remove(delAcct);
+		System.out.println("Deleted account " + username + "!");
 	}
 
 	public static void updateAccount(ArrayList<Account> accounts) {
@@ -225,6 +204,7 @@ public class C206_CaseStudy {
 	}
 
 	public static void addMenuItem(ArrayList<Menu> menuList) {
+		String output = "";
 		String cuisine = Helper.readString("Western / Asian / Vegeterian > ");
 		String meal = Helper.readString("Enter meal name: ");
 		String drink = Helper.readString("Enter choice of drink: ");
@@ -233,7 +213,20 @@ public class C206_CaseStudy {
 
 		Menu newMenuItem = new Menu(cuisine, meal, drink, fruit, price);
 		menuList.add(newMenuItem);
+		boolean isAdded = true;
+		
+		for (Menu m : menuList) {
+			if(isAdded == true) {
+				 output = ("Menu Item successfully added");
+				
+			}else {
+				 output = ("Menu Item add failed");
+			}
 
+		}
+		
+		System.out.println(output);
+		
 	}
 
 	public static void viewMenuItem(ArrayList<Menu> menuList) {
@@ -248,15 +241,31 @@ public class C206_CaseStudy {
 	}
 
 	public static void deleteMenuItem(ArrayList<Menu> menuList) {
+		String output = "";
 		String meal = Helper.readString("Enter meal name: ");
 		for (Menu m : menuList) {
 			if (meal.equals(m.getMeal())) {
 				menuList.remove(m);
+				
+				boolean isAdded = true;
+				
+				for (Menu m1 : menuList) {
+					if(isAdded == true) {
+						 output = ("Menu Item successfully added");
+						
+					}else {
+						 output = ("Menu Item add failed");
+					}
+
+				}
+				
+				System.out.println(output);
+				
 			}
 
 		}
 	}
-	
+
 	public static void updateMenuItem(ArrayList<Menu> menuList) {
 		String meal = Helper.readString("Enter meal name: ");
 		for (Menu m : menuList) {
@@ -267,9 +276,60 @@ public class C206_CaseStudy {
 		}
 
 	}
+<<<<<<< HEAD
 	
 	public static Order inputOrder() {
 		Order odr = null;
+=======
+
+	public static void createMenu(ArrayList<Menu> monthlyMenu) {
+		String cuisine = Helper.readString("Western / Asian / Vegeterian > ");
+		String meal = Helper.readString("Enter meal name: ");
+		for (Menu m : monthlyMenu) {
+			cuisine += m.getCuisine();
+			meal += m.getMeal();
+		}
+
+		String drink = Helper.readString("Enter choice of drink: ");
+		for (Menu m : monthlyMenu) {
+			drink += m.getDrink();
+		}
+
+		String fruit = Helper.readString("Enter type of fruit: ");
+		for (Menu m : monthlyMenu) {
+			fruit += m.getFruit();
+		}
+
+		Double price = Helper.readDouble("Enter price of meal: ");
+		for (Menu m : monthlyMenu) {
+			price += m.getPrice();
+		}
+
+		monthlyMenu.add(new Menu(cuisine, meal, drink, fruit, price));
+	}
+
+	public static void viewMenu(ArrayList<Menu> monthlyMenu) {
+		String view = String.format("%-10s %-20s %-15s %-18s %s\n", "Cuisine", "Meal", "Drink", "Fruit", "Price");
+		Helper.line(60, "=");
+		for (Menu m : monthlyMenu) {
+			view += String.format("%-10s %-20s %-15s %-18s %s\n", m.getCuisine(), m.getMeal(), m.getDrink(),
+					m.getFruit(), m.getPrice());
+		}
+		System.out.println(view);
+	}
+
+	public static void deleteMenu(ArrayList<Menu> monthlyMenu) {
+		String cuisine = Helper.readString("Enter the cuisine: ");
+		for (Menu m : monthlyMenu) {
+			if (cuisine.equalsIgnoreCase(m.getCuisine())) {
+				monthlyMenu.remove(m);
+			}
+		}
+	}
+
+	public static void addLunchBoxOrder(ArrayList<Order> orderList) {
+		setHeader("ADD LUNCH BOX ORDER");
+>>>>>>> branch 'master' of https://github.com/20000276-MeganHan/C206_CaseStudy.git
 		String dateOfOrder = Helper.readString("Enter the date to have the lunch box > ");
 		if (LocalDate.parse(dateOfOrder).getDayOfYear() - LocalDate.now().getDayOfYear() > 0 && LocalDate.parse(dateOfOrder).getMonth() == LocalDate.now().getMonth()) {
 			viewMenuItem(menuList);
@@ -428,4 +488,4 @@ public class C206_CaseStudy {
 
 }
 
-// commenting to check if pushing works.
+

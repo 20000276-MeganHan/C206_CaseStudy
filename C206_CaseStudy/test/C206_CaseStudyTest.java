@@ -46,7 +46,7 @@ public class C206_CaseStudyTest {
 
 		acc1 = new Account("reg234", "12345", "Parent", 20034553, 87832782);
 		acc2 = new Account("amanda456", "45677", "Parent", 20029321, 93032983);
-		acc3 = new Account("jackxoxo", "78323", "Student", 20034553, 0.0, 90382938); // error
+		acc3 = new Account("jackxoxo", "78323", "Student", 12345678, 0.0, 90382938); // error
 		acc4 = new Account("Lor34d", "90323", "Student", 20931324, 0.0, 81210391);
 
 		ob1 = new OrderBill(7260, 3.00, 2, 6.00);
@@ -59,7 +59,7 @@ public class C206_CaseStudyTest {
 
 		item1 = new Menu("Asian", "Chicken Rice", "Milo", "Pear Slice", 4.50);
 		item2 = new Menu("Vegeterian", "Vegeterian Bee Hoon", "Apple Juice", "Banana", 3.00);
-		item3 = new Menu("Vegeterian", "Vegeterian Bee Hoon", "Apple Juice", "Banana", 3);
+		item3 = new Menu("Western", "Baked Rice", "Water","Mango", 3.00);
 
 	}
 
@@ -193,6 +193,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that orderList size is 1", 1, orderList.size());
 
 	}
+<<<<<<< HEAD
 	
 	public void doUpdateLunchBoxOrder() {
 		// Order list is not null, so that can add a new order
@@ -251,6 +252,10 @@ public class C206_CaseStudyTest {
 	}
 
 	public void doAddAcct() {
+=======
+	@Test
+	public void doAddAcctTest() {
+>>>>>>> branch 'master' of https://github.com/20000276-MeganHan/C206_CaseStudy.git
 		// Account list is not null, so that can add a new account
 		// boundary
 		assertNotNull("Check if there is valid account arraylist to add to?", accountList);
@@ -277,15 +282,16 @@ public class C206_CaseStudyTest {
 		assertEquals("Check if the size of accountList is 2", 2, accountList.size());
 
 	}
-
-	public void doViewAcct() {
+	@Test
+	public void doViewAcctTest() {
 		// Test if AccountList is not null but empty - boundary
 		assertNotNull("Test if there is valid Account arrayList to retrieve accounts", accountList);
 
 		// test if the list of accounts retrieved from the SourceCentre is empty -
 		// boundary
 		String allAccts = C206_CaseStudy.viewAccount(accountList);
-		String testOutput = "";
+		String testOutput = String.format("%-10s %-10s %-10s %-10s %s\n", "Username", "Password", "User", "Student ID",
+				"Mobile No");
 		assertEquals("Check that viewAllAcct", testOutput, allAccts);
 
 		// Given an empty list, after adding 2 accounts, test if the size of the list is
@@ -297,15 +303,15 @@ public class C206_CaseStudyTest {
 		// test if the expected output String same as the list of accounts retrieved
 		// from the sourceCentre
 		allAccts = C206_CaseStudy.viewAccount(accountList);
-		testOutput += String.format("%-10s %-10s %-10s %-10d %d\n", "Username", "Password", "User", "Student ID",
-				"Mobile No");
+//		testOutput += String.format("%-10s %-10s %-10s %-10d %d\n", "Username", "Password", "User", "Student ID",
+//				"Mobile No");
 		testOutput += String.format("%-10s %-10s %-10s %-10d %d\n", "reg234", "12345", "Parent", 20034553, 87832782);
 		testOutput += String.format("%-10s %-10s %-10s %-10d %d\n", "amanda456", "45677", "Parent", 20029321, 93032983);
 
 		assertEquals("Test that viewAllAcct", testOutput, allAccts);
 
 	}
-	
+	@Test
 	public void doDeleteAcctTest() {
 		// Account list is not null, so that new order can be added
 		assertNotNull("Check if there is valid Account list to add to ", accountList);
@@ -368,7 +374,8 @@ public class C206_CaseStudyTest {
 		orderbillList.remove(ob1);
 		assertEquals("ob1 is not in the list leaving the list to have 0 order bills ",0,  orderbillList.size());
 	}
-
+	
+	@Test
 	public void doAddMenuItemTest() {
 		// MenuItem list is not null, so that can add a new order (boundary)
 
@@ -382,23 +389,21 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that menuList size is 1 after filling in all fields required", 1, menuList.size());
 		assertSame("Check that new menu item is added successfully", item1, menuList.get(0));
 
-		// Add another order (normal_
+		// Add another order (normal)
 		// Test the size of menuList is now 2
 
 		menuList.add(item2);
 		assertEquals("Check that menuList size is 2 after filling in all fields required", 2, menuList.size());
 		assertSame("Check that new menu item is added successfully", item2, menuList.get(1));
 
-		// Price is invalid (not double) (error)
+		// Given menuList is 2 
+		// Test that after adding menuList is 3
 
 		menuList.add(item3);
 
-		// Do not add this order.
-		// Test size of the list is 2
-
-		assertEquals("Check that menuItem arraylist size is 2", 2, menuList.size());
+		assertEquals("Check that menuItem arraylist size is 3", 3, menuList.size());
 	}
-
+	@Test
 	public void doViewMenuItemTest() {
 		// Test that menu item list is not null but empty (boundary)
 		assertNotNull("Test if there is valid menu item arrayList to retrieve the items", menuList);
@@ -413,23 +418,26 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.viewMenuItem(menuList);
 
 	}
-
+	
+	@Test
 	public void doDeleteMenuItemTest() {
 		// Given menuList size is 2 (normal)
+		menuList.add(item1);
+		menuList.add(item2);
 		// Test to check menuList not empty and able to delete items
 		// Test the size of the list is 1
 		menuList.remove(0);
 		assertEquals("Check that menuList size is 1 after delete successful", 1, menuList.size());
-
-		// Given menuList size is 0 (error)
-		// Test that menuList is not able to delete as it is empty
-		menuList.remove(0);
 
 		// Given menuList size is 1 (boundary)
 		// Test that menuList size is 0 after delete sucessful
 		menuList.remove(0);
 		assertEquals("Check that menuList size is 0 after delete successful", 0, menuList.size());
 
+		// Given menuList size is 0 (error)
+		// Test that menuList is not able to delete as it is empty
+		menuList.remove(0);
+		assertEquals("Check that menuList size is still 0", 0, menuList.size());
 	}
 
 	@After
