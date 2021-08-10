@@ -382,7 +382,7 @@ public class C206_CaseStudy {
 		boolean isUpdated = false;
 		
 		for (Order odr : orderList) {
-			if (date == odr.getDate() && !cuisine.isEmpty()) {
+			if (date.equals(odr.getDate()) && !cuisine.isEmpty()) {
 				for (Menu m : menuList) {
 					if (cuisine.equalsIgnoreCase(m.getCuisine())) {
 					odr.setMeal(m.getMeal());
