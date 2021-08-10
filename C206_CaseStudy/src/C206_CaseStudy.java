@@ -417,7 +417,6 @@ public class C206_CaseStudy {
 		}
 	}
 	
-	
 	public static boolean doFound(ArrayList<Order> orderList, LocalDate date) {
 		boolean isFound = false;
 		
@@ -434,7 +433,7 @@ public class C206_CaseStudy {
 		String date = Helper.readString("Enter order date to cancel > ");
 		if (LocalDate.parse(date).getDayOfYear() - LocalDate.now().getDayOfYear() > 0) {
 			for (Order order : orderList) {
-				if (LocalDate.parse(date) == odr.getDate()) {
+				if (LocalDate.parse(date) == order.getDate()) {
 					order.printInfo();
 					char check = Helper.readChar("Do you want to cancel order? (Y/N) > ");
 					if (check == 'Y') {
