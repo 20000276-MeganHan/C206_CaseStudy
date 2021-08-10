@@ -204,6 +204,7 @@ public class C206_CaseStudy {
 	}
 
 	public static void addMenuItem(ArrayList<Menu> menuList) {
+		String output = "";
 		String cuisine = Helper.readString("Western / Asian / Vegeterian > ");
 		String meal = Helper.readString("Enter meal name: ");
 		String drink = Helper.readString("Enter choice of drink: ");
@@ -216,13 +217,16 @@ public class C206_CaseStudy {
 		
 		for (Menu m : menuList) {
 			if(isAdded == true) {
-				System.out.println("Menu Item successfully added");
+				 output = ("Menu Item successfully added");
 				
 			}else {
-				System.out.println("Menu Item add failed");
+				 output = ("Menu Item add failed");
 			}
-		}
 
+		}
+		
+		System.out.println(output);
+		
 	}
 
 	public static void viewMenuItem(ArrayList<Menu> menuList) {
@@ -237,10 +241,26 @@ public class C206_CaseStudy {
 	}
 
 	public static void deleteMenuItem(ArrayList<Menu> menuList) {
+		String output = "";
 		String meal = Helper.readString("Enter meal name: ");
 		for (Menu m : menuList) {
 			if (meal.equals(m.getMeal())) {
 				menuList.remove(m);
+				
+				boolean isAdded = true;
+				
+				for (Menu m1 : menuList) {
+					if(isAdded == true) {
+						 output = ("Menu Item successfully added");
+						
+					}else {
+						 output = ("Menu Item add failed");
+					}
+
+				}
+				
+				System.out.println(output);
+				
 			}
 
 		}
