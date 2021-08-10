@@ -433,7 +433,7 @@ public class C206_CaseStudy {
 		String date = Helper.readString("Enter order date to cancel > ");
 		if (LocalDate.parse(date).getDayOfYear() - LocalDate.now().getDayOfYear() > 0) {
 			for (Order order : orderList) {
-				if (LocalDate.parse(date) == order.getDate()) {
+				if (LocalDate.parse(date).equals(order.getDate())) {
 					order.printInfo();
 					char check = Helper.readChar("Do you want to cancel order? (Y/N) > ");
 					if (check == 'Y') {
@@ -441,9 +441,11 @@ public class C206_CaseStudy {
 					} else {
 						order.printInfo();
 					}
-				}
+				} else {
 				System.out.println("No order on this date");
+				}
 			}
+		}else {
 			System.out.println("Cancellation Failed");
 		}
 		return odr;
