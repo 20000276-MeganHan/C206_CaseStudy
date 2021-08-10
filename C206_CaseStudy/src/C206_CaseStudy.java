@@ -129,8 +129,8 @@ public class C206_CaseStudy {
 		System.out.println("1. View Inventory");
 		System.out.println("2. Add");
 		System.out.println("3. Delete");
-		System.out.println("4. Quit");
-		System.out.println("5. Update");
+		System.out.println("4. Update");
+		System.out.println("5. Quit");
 
 		Helper.line(80, "-");
 	}
