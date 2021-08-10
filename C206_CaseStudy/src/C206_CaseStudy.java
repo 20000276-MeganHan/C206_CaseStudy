@@ -276,11 +276,6 @@ public class C206_CaseStudy {
 		}
 
 	}
-<<<<<<< HEAD
-	
-	public static Order inputOrder() {
-		Order odr = null;
-=======
 
 	public static void createMenu(ArrayList<Menu> monthlyMenu) {
 		String cuisine = Helper.readString("Western / Asian / Vegeterian > ");
@@ -327,9 +322,8 @@ public class C206_CaseStudy {
 		}
 	}
 
-	public static void addLunchBoxOrder(ArrayList<Order> orderList) {
-		setHeader("ADD LUNCH BOX ORDER");
->>>>>>> branch 'master' of https://github.com/20000276-MeganHan/C206_CaseStudy.git
+	public static Order inputOrder() {
+		Order odr = null;
 		String dateOfOrder = Helper.readString("Enter the date to have the lunch box > ");
 		if (LocalDate.parse(dateOfOrder).getDayOfYear() - LocalDate.now().getDayOfYear() > 0 && LocalDate.parse(dateOfOrder).getMonth() == LocalDate.now().getMonth()) {
 			viewMenuItem(menuList);
