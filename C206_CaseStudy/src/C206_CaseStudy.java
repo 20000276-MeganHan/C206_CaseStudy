@@ -112,6 +112,7 @@ public class C206_CaseStudy {
 				} else if (update == 2) { // update menu items
 				} else if (update == 3) {
 				} else if (update == 4) { // update lunch box order
+					updateLunchBoxOrder(orderList);
 				} else if (update == 5) {
 
 				}
@@ -432,7 +433,7 @@ public class C206_CaseStudy {
 		boolean isFound = false;
 
 		for (Order odr : orderList) {
-			if (date == odr.getDate()) {
+			if (date.equals(odr.getDate())) {
 				isFound = true;
 			}
 		}
