@@ -149,32 +149,18 @@ public class C206_CaseStudy {
 	public static void addAccount(ArrayList<Account> accounts, ArrayList<Integer> studentidList, Account newAcct) {
 		boolean validSID = false;
 		boolean added = false;
-
-		if (newAcct.getUser().equalsIgnoreCase("Parent")) {
-			for (Integer i : studentidList) {
-				if (newAcct.getStudentID() == i) {
-					validSID = true;
-					added = true;
-				}
-			}
-		} else {
-			for (Integer i : studentidList) {
-				if (newAcct.getStudentID() == i) {
-					validSID = true;
-					added = true;
-				}
+		
+		for (Integer i: studentidList) {
+			if (newAcct.getStudentID() == i) {
+				validSID = true;
 			}
 		}
-		if (added == true) {
+		
+		if (validSID == true) {
 			accounts.add(newAcct);
-			System.out.println("Added account successfully!");
-		} else if (validSID == false) {
-			System.out.println("Student ID entered invalid");
-		}
-
-		if (added == false) {
-			System.out.println("Account is not added!");
-		}
+			System.out.println("Account added successfully!");
+		}else 
+			System.out.println("Invalid student ID, account is not ADDED!");
 	}
 
 	public static String viewAccount(ArrayList<Account> accounts) {
