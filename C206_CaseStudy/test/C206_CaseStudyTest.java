@@ -354,7 +354,7 @@ public class C206_CaseStudyTest {
 		// Given menuList size is 0 (error)
 		// Test that menuList is not able to delete as it is empty
 		menuList.remove(0);
-
+		assertEquals("Check that menuList size is still 0", 0, menuList.size());
 		// Given menuList size is 1 (boundary)
 		// Test that menuList size is 0 after delete sucessful
 		menuList.remove(0);
