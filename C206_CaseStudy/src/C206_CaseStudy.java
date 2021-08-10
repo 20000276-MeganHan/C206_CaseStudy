@@ -390,10 +390,8 @@ public class C206_CaseStudy {
 				if (isUpdated == true) {
 					System.out.println("Lunch Box Order Updated");
 				} else {
-					System.out.println("Update failed");
-				}
-			} else {
 				System.out.println("No order on this date");
+				}
 			}
 		} else {
 			System.out.println("Lunch box Order is unable to update");

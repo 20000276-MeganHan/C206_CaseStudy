@@ -128,7 +128,6 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addLunchBoxOrder(orderList, lunchBoxOrder2);
 		assertEquals("Check that orderList size is 2", 2, orderList.size());
 
-		// Do not add this order.
 		// Test size of the list is 2
 		assertEquals("Check that foodItems arraylist size is 2", 2, orderList.size());
 
