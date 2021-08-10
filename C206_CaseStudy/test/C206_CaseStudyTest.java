@@ -193,8 +193,8 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that orderList size is 1", 1, orderList.size());
 
 	}
-<<<<<<< HEAD
 	
+	@Test
 	public void doUpdateLunchBoxOrder() {
 		// Order list is not null, so that can add a new order
 		// boundary
@@ -230,7 +230,7 @@ public class C206_CaseStudyTest {
 		// Update order from orderList
 		// Check the lunch box order is updated in the orderList
 		// normal
-		C206_CaseStudy.updateLunchBoxOrder(orderList, lunchBoxOrder2);
+		C206_CaseStudy.doUpdate(orderList, lunchBoxOrder2.getDate(), "Asian");
 		assertSame("Check that lunch box order is updated", lunchBoxOrder2, orderList.get(1));
 
 		// Check that Lunch Box Order date is after today date - "2021-08-30"
@@ -240,7 +240,7 @@ public class C206_CaseStudyTest {
 		// Update order from orderList
 		// Check the lunch box order is updated in the orderList
 		// normal
-		C206_CaseStudy.updateLunchBoxOrder(orderList, lunchBoxOrder1);
+		C206_CaseStudy.doUpdate(orderList, lunchBoxOrder1.getDate(), "Asian");
 		assertSame("Check that lunch box order is updated", lunchBoxOrder1, orderList.get(0));
 				
 		// Check that Lunch Box Order date is after today date - "2021-08-15"
@@ -251,11 +251,9 @@ public class C206_CaseStudyTest {
 		assertSame("Check that lunch box order is updated", lunchBoxOrder4, orderList.get(2));
 	}
 
-	public void doAddAcct() {
-=======
+
 	@Test
 	public void doAddAcctTest() {
->>>>>>> branch 'master' of https://github.com/20000276-MeganHan/C206_CaseStudy.git
 		// Account list is not null, so that can add a new account
 		// boundary
 		assertNotNull("Check if there is valid account arraylist to add to?", accountList);
