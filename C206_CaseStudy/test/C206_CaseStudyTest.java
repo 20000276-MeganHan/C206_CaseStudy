@@ -57,7 +57,7 @@ public class C206_CaseStudyTest {
 
 		item1 = new Menu("Asian", "Chicken Rice", "Milo", "Pear Slice", 4.50);
 		item2 = new Menu("Vegeterian", "Vegeterian Bee Hoon", "Apple Juice", "Banana", 3.00);
-		item3 = new Menu("Vegeterian", "Vegeterian Bee Hoon", "Apple Juice", "Banana", 3);
+		item3 = new Menu("Western", "Baked Rice", "Water","Mango", 3.00);
 
 	}
 
@@ -299,7 +299,8 @@ public class C206_CaseStudyTest {
 		orderbillList.remove(ob1);
 		assertEquals("ob1 is not in the list leaving the list to have 0 order bills ",0,  orderbillList.size());
 	}
-
+	
+	@Test
 	public void doAddMenuItemTest() {
 		// MenuItem list is not null, so that can add a new order (boundary)
 
@@ -313,23 +314,21 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that menuList size is 1 after filling in all fields required", 1, menuList.size());
 		assertSame("Check that new menu item is added successfully", item1, menuList.get(0));
 
-		// Add another order (normal_
+		// Add another order (normal)
 		// Test the size of menuList is now 2
 
 		menuList.add(item2);
 		assertEquals("Check that menuList size is 2 after filling in all fields required", 2, menuList.size());
 		assertSame("Check that new menu item is added successfully", item2, menuList.get(1));
 
-		// Price is invalid (not double) (error)
+		// Given menuList is 2 
+		// Test that after adding menuList is 3
 
 		menuList.add(item3);
 
-		// Do not add this order.
-		// Test size of the list is 2
-
-		assertEquals("Check that menuItem arraylist size is 2", 2, menuList.size());
+		assertEquals("Check that menuItem arraylist size is 3", 3, menuList.size());
 	}
-
+	@Test
 	public void doViewMenuItemTest() {
 		// Test that menu item list is not null but empty (boundary)
 		assertNotNull("Test if there is valid menu item arrayList to retrieve the items", menuList);
@@ -344,7 +343,8 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.viewMenuItem(menuList);
 
 	}
-
+	
+	@Test
 	public void doDeleteMenuItemTest() {
 		// Given menuList size is 2 (normal)
 		// Test to check menuList not empty and able to delete items
