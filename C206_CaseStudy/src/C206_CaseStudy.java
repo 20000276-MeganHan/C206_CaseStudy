@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
-	private static final int OPTION_OUT = 4;
+	private static final int OPTION_OUT = 5;
 	private static ArrayList<Menu> menuList = new ArrayList<Menu>();
 	private static ArrayList<Menu> monthlyMenu = new ArrayList<Menu>();
 	private static ArrayList<Account> accounts = new ArrayList<Account>();
@@ -54,7 +54,7 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == 2) {
-				C206_CaseStudy.setHeader("Select option to view");
+				C206_CaseStudy.setHeader("Select option to add");
 				System.out.println("1. Add user account for Parents/Secondary school students");
 				System.out.println("2. Add menu items");
 				System.out.println("3. Add monthly menu");
@@ -77,7 +77,7 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == 3) {
-				C206_CaseStudy.setHeader("Select option to view");
+				C206_CaseStudy.setHeader("Select option to delete");
 				System.out.println("1. Delete user account for Parents/Secondary school students");
 				System.out.println("2. Delete menu items");
 				System.out.println("3. Delete monthly menu");
@@ -98,6 +98,13 @@ public class C206_CaseStudy {
 					deleteBill(orderbillList);
 
 				}
+			}else if (option == 4) {
+				C206_CaseStudy.setHeader("Select option to update");
+				System.out.println("1. Update user account for Parents/Secondary school students");
+				System.out.println("2. Update menu items");
+				System.out.println("3. Update monthly menu");
+				System.out.println("4. Update lunch box order");
+				System.out.println("5. Update order bill");
 			}
 
 		}
@@ -148,15 +155,19 @@ public class C206_CaseStudy {
 
 	public static void addAccount(ArrayList<Account> accounts, ArrayList<Integer> studentidList, Account newAcct) {
 		boolean validSID = false;
-		boolean added = false;
-		
+		boolean uniqueUN = false;
 		for (Integer i: studentidList) {
 			if (newAcct.getStudentID() == i) {
 				validSID = true;
 			}
 		}
 		
-		if (validSID == true) {
+		for (Account a : accounts) {
+			if (!a.getUsername().equals(newAcct.getUsername())) {
+				uniqueUN = true;
+			}
+		}
+		if (validSID == true && uniqueUN == true && newAcct.getStudentID() != 0) {
 			accounts.add(newAcct);
 			System.out.println("Account added successfully!");
 		}else 
@@ -191,15 +202,23 @@ public class C206_CaseStudy {
 		accounts.remove(delAcct);
 		System.out.println("Deleted account " + username + "!");
 	}
+	
 
 	public static void updateAccount(ArrayList<Account> accounts) {
+		boolean updated = false;
 		String username = Helper.readString("Enter your username > ");
 		for (Account a : accounts) {
 			if (username.equals(a.getUsername())) {
 				int mobileNo = Helper.readInt("Enter new mobile no > ");
 				a.setMobileNo(mobileNo);
+				updated = true;
 			}
 		}
+		
+		if (updated == true) {
+			System.out.println("Updated successfully");
+		}else 
+			System.out.println("Update failed!");
 
 	}
 
