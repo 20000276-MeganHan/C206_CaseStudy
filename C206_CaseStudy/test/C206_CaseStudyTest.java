@@ -195,7 +195,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void doUpdateLunchBoxOrder() {
+	public void doUpdateLunchBoxOrderTest() {
 		// Order list is not null, so that can add a new order
 		// boundary
 		assertNotNull("Check if there is valid lunchBoxOrder arraylist to add to", orderList);
