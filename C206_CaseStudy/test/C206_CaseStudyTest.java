@@ -419,24 +419,29 @@ public class C206_CaseStudyTest {
 	@Test
 	public void doDeleteMenuItemTest() {
 		// MenuItem list is not null, so that can add a new order (boundary)
+		menuList.add(item1);
+		menuList.add(item2);
+		menuList.add(item3);
 		assertNotNull("Check if there is valid Menu items arraylist to add to", menuList);
 		// Given menuList size is 3 (normal)
 
 		// Test to check menuList not empty and able to delete items
 		// Test the size of the list is 2
-		menuList.remove(0);
+		menuList.remove(item1);
 		assertEquals("Check that menuList size is 2 after delete successful", 2, menuList.size());
-
-
-		// Given menuList size is 2 (boundary)
-		// Test that menuList size is 0 after delete sucessful
-		menuList.remove(0);
+		
+		// Given menuList size is 2 (normal)
+		// Test that menuList size is 1 after delete successful
+		menuList.remove(item2);
 		assertEquals("Check that menuList size is 1 after delete successful", 1, menuList.size());
 
-		// Given menuList size is 0 (error)
-		// Test that menuList is not able to delete as it is empty
-		menuList.remove(0);
-		assertEquals("Check that menuList size is still 0", 0, menuList.size());
+
+		// Given menuList size is 1 (boundary)
+		// Test that menuList size is 0 after delete successful
+		menuList.remove(item2);
+		assertEquals("Check that menuList size is 1 after delete successful", 0, menuList.size());
+
+
 	}
 	
 
