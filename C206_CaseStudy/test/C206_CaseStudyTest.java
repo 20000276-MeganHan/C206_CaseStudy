@@ -438,7 +438,7 @@ public class C206_CaseStudyTest {
 
 		// Given menuList size is 1 (boundary)
 		// Test that menuList size is 0 after delete successful
-		menuList.remove(item2);
+		menuList.remove(item3);
 		assertEquals("Check that menuList size is 1 after delete successful", 0, menuList.size());
 
 
